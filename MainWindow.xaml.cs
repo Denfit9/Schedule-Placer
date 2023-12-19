@@ -1,4 +1,5 @@
 ﻿using CinemaSchedule.Models;
+using CinemaSchedule.MySQLServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,8 +26,8 @@ namespace CinemaSchedule
         public MainWindow()
         {
             InitializeComponent();
-            User user1 = new User(1, "anon", "anonymous", "anon@gmail.com", "12345");
-            App.users.Add(user1);
+            //User user1 = new User(1, "anon", "anonymous", "anon@gmail.com", "12345");
+            //App.users.Add(user1);
 
         }
 
@@ -37,8 +38,40 @@ namespace CinemaSchedule
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
+            string error = "";
+            int errorCount = 0;
 
-            User usr = App.users.FirstOrDefault(us => us.email == email_text.Text && us.password == password_text.Password.ToString());
+            if(email_text.Text.Length == 0)
+            {
+                error += "Поле почты пусто\n";
+                errorCount++;
+            }
+            if(password_text.Password.Length == 0)
+            {
+                error += "Поле пароля пусто\n";
+                errorCount++;
+            }
+
+
+
+            if (errorCount != 0)
+            {
+                showErrorMessage(error);
+            }
+            else
+            {
+                if (!DatabaseQueries.checkUserExistence(email_text.Text.ToString(), password_text.Password))
+                {
+                    showErrorMessage("Пользователь с такими данными не найден!\nВозможно вы где-то ошиблись.");
+                    password_text.Clear();
+                }
+                else
+                {
+
+                }
+            }
+
+            /*User usr = App.users.FirstOrDefault(us => us.email == email_text.Text && us.password == password_text.Password.ToString());
             if (usr != null)
             {
                 email_text.Text = usr.userID.ToString();
@@ -47,7 +80,7 @@ namespace CinemaSchedule
             else
             {
                 showErrorMessage("Пользователя не существует");
-            }
+            }*/
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)

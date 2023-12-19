@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ftr8S6HpjI6QwHjijfgj/K4jJ4BKPJbUevBWdX8m40pxpT/wvCMduwy5rUeh9MvM8SaUwCrU4pWoHzpZaoRQzw==",
+  "dgSpecHash": "mIHhsC4rhWqwOJJboZtRWLdD03rATvqxamo5qs3K0q/adxuHNWJ9T8JVjpJREFNYkQU0J5B9IqbZtvtEuyWViA==",
   "success": true,
   "projectFilePath": "C:\\Users\\d0306\\Documents\\Cinema\\CinemaSchedule\\CinemaSchedule\\CinemaSchedule.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\d0306\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\d0306\\.nuget\\packages\\mysqlconnector\\2.3.3\\mysqlconnector.2.3.3.nupkg.sha512"
+  ],
   "logs": []
 }
