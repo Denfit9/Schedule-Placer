@@ -1,0 +1,96 @@
+﻿<Window x:Class="CinemaSchedule.MainApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaSchedule"
+        mc:Ignorable="d"
+        Title="MainApp" Height="900" Width="1920"
+        WindowState="Maximized"
+        Background="#FF2DB3FF" >
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#348EF6"/>
+        <SolidColorBrush x:Key="SecondaryBlueColor" Color="#EFF2FF"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="SecondaryTextColor" Color="#BBC1D1"/>
+        <SolidColorBrush x:Key="ThirdTextColor" Color="#909090"/>
+        <SolidColorBrush x:Key="PrimaryGrayColor" Color="#BBC1D1"/>
+
+        <Style x:Key="TabItemStyle" TargetType="TabItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="0 0 5 0"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="FontSize" Value="16"/>
+
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border>
+                            <Grid>
+                                <Grid>
+                                    <Border x:Name="border" 
+                                            CornerRadius="3,3,0,0"
+                                            Background="WhiteSmoke"/>
+                                </Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Margin="{TemplateBinding Margin}"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#348EF6" />
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Margin="0,-760,80,0" Background="#FF2DB3FF" Height="50">
+            <Label x:Name="NSP" Content="Label" HorizontalAlignment ="Right" Margin="0,0,10,0" FontSize="16" Height="50" VerticalContentAlignment="Center" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Margin="0,-760,0,0" HorizontalAlignment="Right" Background="#FF2DB3FF" Height="50" Width="80" >
+            <Button Content="Выход" HorizontalAlignment ="Right" Margin="0,0,10,0" FontSize="16" Height="50" VerticalContentAlignment="Center" Foreground="White" BorderThickness="0" Background="#FF2DB3FF" Click="Button_Click_1"></Button>
+        </StackPanel>
+        <TabControl Margin="0,25,0,0">
+            <TabItem Header="Кинотеатр" Style="{DynamicResource TabItemStyle}">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="cinemaNameLabel" Content="CinemaName" HorizontalAlignment="Center" FontSize="30" FontFamily="Book Antiqua" Margin="0,60,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="description" HorizontalAlignment="Center" Margin="0,150,0,0" FontFamily="Book Antiqua" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="800" Height="200" MaxLength="500"/>
+                    <Button Content="Сохранить изменения" HorizontalAlignment="Center" Margin="990,150,0,0" VerticalAlignment="Top" BorderThickness="0" Background="#FF45BD2F" Width="180" Height="40" Foreground="White" Click="Button_Click"/>
+                    <Label x:Name="cinemaNameLabel_Copy" Content="Описание" HorizontalAlignment="Left" FontSize="20" FontFamily="Book Antiqua" Margin="300,115,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="cinemaNameLabel_Copy1" Content="Залы" HorizontalAlignment="Left" FontSize="20" FontFamily="Book Antiqua" Margin="557,373,0,0" VerticalAlignment="Top"/>
+                    <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="800" HorizontalAlignment="Center" Margin="0,290,0,0" Height="300" MaxHeight="300" VerticalScrollBarVisibility="Auto"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Заметки" Style="{DynamicResource TabItemStyle}" HorizontalAlignment="Left" Margin="-2,0,0,0">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Расписание" Style="{DynamicResource TabItemStyle}">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+           
+        </TabControl>
+
+    </Grid>
+</Window>

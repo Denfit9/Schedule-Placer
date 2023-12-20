@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\App.xaml
-22127798903
+4529936678
 
-11-2091843612
-200178634778
-MainWindow.xaml;RegistrationUser.xaml;
+13675948981
+204-1782918693
+MainApp.xaml;MainWindow.xaml;Registration.xaml;RegistrationUser.xaml;
 
-False
+True
 

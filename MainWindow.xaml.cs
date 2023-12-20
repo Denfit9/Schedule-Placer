@@ -18,7 +18,6 @@ namespace CinemaSchedule
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public void showErrorMessage(string errorContent)
         {
             MessageBox.Show(errorContent, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -26,8 +25,6 @@ namespace CinemaSchedule
         public MainWindow()
         {
             InitializeComponent();
-            //User user1 = new User(1, "anon", "anonymous", "anon@gmail.com", "12345");
-            //App.users.Add(user1);
 
         }
 
@@ -67,25 +64,21 @@ namespace CinemaSchedule
                 }
                 else
                 {
-
+                    MessageBox.Show("Вход успешен", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    App.userID = DatabaseQueries.getUserID(email_text.Text.ToString());
+                    MainApp main = new MainApp();
+                    main.Show();
+                    this.Close();
                 }
             }
 
-            /*User usr = App.users.FirstOrDefault(us => us.email == email_text.Text && us.password == password_text.Password.ToString());
-            if (usr != null)
-            {
-                email_text.Text = usr.userID.ToString();
-                password_text.Password = "";
-            }
-            else
-            {
-                showErrorMessage("Пользователя не существует");
-            }*/
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            Signin.Content = new RegistrationUser();
+            Registration registration = new Registration();
+            registration.Show();
+            this.Close();
         }
     }
 }

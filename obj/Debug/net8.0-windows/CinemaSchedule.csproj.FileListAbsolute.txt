@@ -25,3 +25,11 @@ C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-w
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\MySqlConnector.dll
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\CinemaSchedule.csproj.AssemblyReference.cache
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\CinemaSchedule.csproj.CopyComplete
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Registration.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Registration.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\MainApp.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\MainApp.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\Dragablz.dll
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\MaterialDesignColors.dll
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll

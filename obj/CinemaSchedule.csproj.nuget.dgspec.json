@@ -44,6 +44,14 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "Dragablz": {
+              "target": "Package",
+              "version": "[0.0.3.234, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.3.3, )"
