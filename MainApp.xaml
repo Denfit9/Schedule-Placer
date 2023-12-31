@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="CinemaSchedule.UserControls.MyCinema"
         xmlns:local="clr-namespace:CinemaSchedule"
         mc:Ignorable="d"
         Title="MainApp" Height="900" Width="1920"
         WindowState="Maximized"
         Background="#FF2DB3FF" >
     <Window.Resources>
-        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#348EF6"/>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#338EF6"/>
         <SolidColorBrush x:Key="SecondaryBlueColor" Color="#EFF2FF"/>
         <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF"/>
         <SolidColorBrush x:Key="SecondaryTextColor" Color="#BBC1D1"/>
@@ -64,33 +65,30 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
-        <StackPanel Margin="0,-760,80,0" Background="#FF2DB3FF" Height="50">
-            <Label x:Name="NSP" Content="Label" HorizontalAlignment ="Right" Margin="0,0,10,0" FontSize="16" Height="50" VerticalContentAlignment="Center" Foreground="White"/>
+    <Grid Background="White">
+        <StackPanel Margin="0,0,80,0" Background="#FF2DB3FF" Height="50" VerticalAlignment="Top">
+            <Label x:Name="NSP" Content="Label" HorizontalAlignment ="Right" Margin="0,0,10,0" FontSize="16" Height="50" VerticalContentAlignment="Center" Foreground="White" d:IsHidden="True" />
         </StackPanel>
-        <StackPanel Margin="0,-760,0,0" HorizontalAlignment="Right" Background="#FF2DB3FF" Height="50" Width="80" >
-            <Button Content="Выход" HorizontalAlignment ="Right" Margin="0,0,10,0" FontSize="16" Height="50" VerticalContentAlignment="Center" Foreground="White" BorderThickness="0" Background="#FF2DB3FF" Click="Button_Click_1"></Button>
+        <StackPanel Margin="0,0,0,0" HorizontalAlignment="Right" Background="#FF2DB3FF" Height="50" Width="80" VerticalAlignment="Top">
+            <Button Content="Выход" HorizontalAlignment ="Right" Margin="0,0,10,0" FontSize="16" Height="50" VerticalContentAlignment="Center" Foreground="White" BorderThickness="0" Background="#FF2DB3FF"  Click="Button_Click_1"/>
         </StackPanel>
-        <TabControl Margin="0,25,0,0">
-            <TabItem Header="Кинотеатр" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
-                    <Label x:Name="cinemaNameLabel" Content="CinemaName" HorizontalAlignment="Center" FontSize="30" FontFamily="Book Antiqua" Margin="0,60,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="description" HorizontalAlignment="Center" Margin="0,150,0,0" FontFamily="Book Antiqua" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="800" Height="200" MaxLength="500"/>
-                    <Button Content="Сохранить изменения" HorizontalAlignment="Center" Margin="990,150,0,0" VerticalAlignment="Top" BorderThickness="0" Background="#FF45BD2F" Width="180" Height="40" Foreground="White" Click="Button_Click"/>
-                    <Label x:Name="cinemaNameLabel_Copy" Content="Описание" HorizontalAlignment="Left" FontSize="20" FontFamily="Book Antiqua" Margin="300,115,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="cinemaNameLabel_Copy1" Content="Залы" HorizontalAlignment="Left" FontSize="20" FontFamily="Book Antiqua" Margin="557,373,0,0" VerticalAlignment="Top"/>
-                    <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="800" HorizontalAlignment="Center" Margin="0,290,0,0" Height="300" MaxHeight="300" VerticalScrollBarVisibility="Auto"/>
+        <StackPanel Margin="0,0,0,0" HorizontalAlignment="Left" Background="#FF2DB3FF" Width="80">
+            <Button VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" Height="50" Margin="0,50,0,0" BorderThickness="0" Background="{x:Null}" Click="Button_Click" >
+                <Image Source="/Resources/cinema.png" Height="35"/>
+            </Button>
+            <Button Width="80" Height="50" BorderThickness="0" Background="{x:Null}"  HorizontalContentAlignment="Center" Click="Button_Click_2">
+                <Image Source="/Resources/notes.png" Height="35"/>
+            </Button>
+            <Button Width="80" Height="50" BorderThickness="0" Background="{x:Null}"  HorizontalContentAlignment="Center" Click="Button_Click_3">
+                <Image Source="/Resources/movie-roll-tape.png" Height="35"/>
+            </Button>
+            <Button Width="80" Height="50" BorderThickness="0" Background="{x:Null}"  HorizontalContentAlignment="Center" Click="Button_Click_4">
+                <Image Source="/Resources/movie-reel.png" Height="35"/>
+            </Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Background="#FF1E3AF1" Width="80" Margin="0,0,0,0" VerticalAlignment="Top" Height="50"/>
+        <DockPanel x:Name="ContentPanel" Margin="80,50,0,0" LastChildFill="True"/>
 
-                </Grid>
-            </TabItem>
-            <TabItem Header="Заметки" Style="{DynamicResource TabItemStyle}" HorizontalAlignment="Left" Margin="-2,0,0,0">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Расписание" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-           
-        </TabControl>
 
     </Grid>
 </Window>

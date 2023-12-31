@@ -33,3 +33,15 @@ C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-w
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\MaterialDesignColors.dll
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\MyCinema.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\MyCinema.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\Resources\notes.png
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\CinemaSchedule_Content.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\Resources\movie-reel.png
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\bin\Debug\net8.0-windows\Resources\movie-roll-tape.png
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Movies.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Notes.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Schedule.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Movies.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Notes.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Schedule.baml

@@ -9,6 +9,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\cinema.png" />
+    <None Remove="Resources\movie-reel.png" />
+    <None Remove="Resources\movie-roll-tape.png" />
+    <None Remove="Resources\notes.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\movie-reel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\movie-roll-tape.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\notes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\cinema.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dragablz" Version="0.0.3.234" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="MySqlConnector" Version="2.3.3" />
