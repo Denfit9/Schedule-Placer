@@ -1,0 +1,17 @@
+﻿<Window x:Class="CinemaSchedule.Windows.editNoteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaSchedule.Windows"
+        mc:Ignorable="d"
+        Title="editNoteWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Создание новой заметки" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Контент заметки" HorizontalAlignment="Left" Margin="60,45,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="noteNameTextBox" HorizontalAlignment="Left" Margin="60,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="440" MaxLength="1000" Height="320" AcceptsTab="True" AcceptsReturn="True">
+        </TextBox>
+            <Button IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Margin="516,265,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFBFF99C" Click="Button_Click" />
+        <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="516,339,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFD4D4D4"/>
+    </Grid>
+</Window>

@@ -5,8 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CinemaSchedule.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="1800" d:DesignWidth="1000" Background="White">
+             d:DesignHeight="800" d:DesignWidth="1800" Background="White">
     <Grid>
-            
+        <Label x:Name="cinemaNameLabel" Content="Заметки" HorizontalAlignment="Center" FontSize="30" FontFamily="Book Antiqua" Margin="0,15,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addNoteButton" Content="Добавить" HorizontalAlignment="Center" Margin="1250,60,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="18" BorderBrush="Black" BorderThickness="2" Width="120" Click="addHallButton_Click"/>
+        <StackPanel HorizontalAlignment="Center" Height="680" Margin="0,60,200,0" VerticalAlignment="Top" Width="1200">
+            <ListView  x:Name="notesList" VerticalContentAlignment="Center" Height="680">
+               
+            </ListView>
+        </StackPanel>
     </Grid>
 </UserControl>

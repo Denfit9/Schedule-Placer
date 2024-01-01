@@ -16,12 +16,10 @@
         <Button x:Name="declineDescriptionButton" Content="Отмена" HorizontalAlignment="Center" Margin="-400,325,0,0" VerticalAlignment="Top" Background="#FFFD8F8F" FontSize="18" BorderBrush="Black" BorderThickness="1" Width="120" Visibility="Hidden" Click="declineDescriptionButton_Click" />
         <TextBox x:Name="descriptionTextBox" MaxLength="490" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Book Antiqua" Width="800" Height="250" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" TextWrapping="Wrap" Text="" Visibility="Hidden"/>
         <Label x:Name="cinemaHallsLabel" Content="Залы:" HorizontalAlignment="Center" FontSize="22" FontFamily="Book Antiqua" Margin="-730,360,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addHallButton" Content="Добавить" HorizontalAlignment="Center" Margin="680,367,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="18" BorderBrush="Black" BorderThickness="2" Width="120" Click="addHallButton_Click"/>
         <Rectangle HorizontalAlignment="Center" Height="300" Margin="0,400,0,0" Stroke="Black" VerticalAlignment="Top" Width="800"/>
         <StackPanel HorizontalAlignment="Center" Height="300" Margin="0,400,0,0" VerticalAlignment="Top" Width="800">
-            <ListView VerticalContentAlignment="Center" Height="300">
-                <local:HallsControl/>
-                <local:HallsControl/>
-                <local:HallsControl/>
+            <ListView  x:Name="hallsList" VerticalContentAlignment="Center" Height="300">
             </ListView>
         </StackPanel>
     </Grid>

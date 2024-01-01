@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="CinemaSchedule.UserControls.NotesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CinemaSchedule.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1200">
+    <Grid>
+        <Rectangle RadiusX="25" RadiusY="25" Fill="#FFC3C3C3" Width="1160" Height="300"></Rectangle>
+        <TextBlock x:Name="noteDescription" Text="jjQA8JmUHEXPAdFv9FyJLhNN8PkM3oDjn0qD15zMdSzkGk73RYThxdJx5FmBt78IWDX4ZRnLDgkpS04G5WQuGXt8j0B2abT7QWyrdvkcEcgHyK9oEj3dlm0zF1QsvXX7NPD5z8QfNp607b7hXJ1LrIdv2zR6i5GiLPJkAJkNfpowC4V3TkIEaYUHvC88FiKSOAmxoiQUDGwau3ruDjfEnhPAjErpdeaJ1OlaTAuUkl3Y4YWwaEu5CC5DXWnrRNMXbIcVVEtvm4EJPfP41TC9OSgmyT1RbVQBfKrbc2fbfG62ulBRfoWpFxUWpaasyflLLnK78pgfQ6CogqijZ0EDh08uOr9gOXYIXhYbJ9YsC6b1OxaCmnlmfAypAJOsNfxYN6p68P4yVItmmRqIN0l3d5lwPT1HKmDuhoHH50WBZ8uQOnwkTx2mYZKpxabqd5AGhlm5m4vY6mZVf4sUUggzOzFdfvwNyw9aEv5Kw3Q9vvT4DNrmN4PzG4GuShrhPNnSm7AF3Wwl9Ao4zFOXwFSyd5AuPqOUeOqpVJvZTgXAjkMnSLAeyCGXyE19HniwDzQbLblq1UHpFOs1kJWBYv6n10FbSAkU5iGAfr9K4V4ccDjPvIcPgdf999M2Na0iYCrvAIt3MtvzLmIHpew8pT4jCwD9jRHu0SmL4X4IWRxqmyGQDssFTlVZIGQ8dXE6WzOe7eRk02wm5RPOl9WWkeyWgAdAMjBSfoe4fFeOshxsXMP0mLn11R0o2fsnsxsuj9az3Y14exrXA2WtpeR2jVtiDJpbv3Oa5eQRkhZuIix1komsMotMn9PIBxI63CGbuvxbx1Rx8jx9DWkrtfRMwwFLrHhshWjnwg04lrCdgkP8kSJqzmsa1ZemXLrFux4OSoA5BqwfbywEdltlCo0k2B0oV4Ab6Exz833jtFUwH4RWQ1tarWLrGq2mksztALyk0pbXcjrxkkzMjRp7Mw8rO9Ri0ZrSOIEeEmAo9QB9R8gF
+
+" TextWrapping="Wrap" HorizontalAlignment="Center"  Margin="20,15,20,0" VerticalAlignment="Top" FontSize="16" Width="1120" Height="180"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Background="#FFFCFCFC" FontSize="16" BorderThickness="1" BorderBrush="Black" Width="100" Click="Button_Click_1" />
+        <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Background="#FFFDB9B9" FontSize="16" BorderThickness="1" BorderBrush="Black" Width="100" Click="Button_Click" />
+        <Label x:Name="noteID" Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+    </Grid>
+</UserControl>

@@ -47,4 +47,13 @@ C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-w
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Schedule.baml
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\HallsControl.g.cs
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\HallsControl.baml
-C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\addHallWindow.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\addHallWindow.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\editHallWindow.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\editHallWindow.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\addNoteWindow.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\addNoteWindow.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\NotesControl.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\NotesControl.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\editNoteWindow.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\editNoteWindow.baml

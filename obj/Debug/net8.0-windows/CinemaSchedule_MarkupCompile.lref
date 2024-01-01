@@ -4,9 +4,14 @@ FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\MainApp.xaml;;
 FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\MainWindow.xaml;;
 FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\Registration.xaml;;
 FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\RegistrationUser.xaml;;
-FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\MyCinema.xaml;;
-FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\Movies.xaml;;
-FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\Notes.xaml;;
-FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\Schedule.xaml;;
 FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\HallsControl.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\Movies.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\MyCinema.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\Notes.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\NotesControl.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\UserControls\Schedule.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\Windows\addHallWindow.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\Windows\addNoteWindow.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\Windows\editHallWindow.xaml;;
+FC:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\Windows\editNoteWindow.xaml;;
 

@@ -1,4 +1,5 @@
-﻿using CinemaSchedule.MySQLServices;
+﻿using CinemaSchedule.Models;
+using CinemaSchedule.MySQLServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,15 @@ namespace CinemaSchedule.UserControls
     /// </summary>
     public partial class MyCinema : UserControl
     {
+        public void refreshHalls(int userID)
+        {
+            hallsList.Items.Clear();
+            List<Hall> halls = DatabaseQueries.populateHalls(userID);
+            foreach (Hall hall in halls)
+            {
+                hallsList.Items.Add(new HallsControl(hall.hallID, hall.hallName, hall.hallDescription));
+            }
+        }
         public void showErrorMessage(string errorContent)
         {
             MessageBox.Show(errorContent, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -38,6 +48,7 @@ namespace CinemaSchedule.UserControls
         public MyCinema()
         {
             InitializeComponent();
+            refreshHalls(App.userID);
             cinemaNameLabel.Content = "Кинотеатр  " + DatabaseQueries.getCinemaName(App.userID);
             descriptionLabel.Text = DatabaseQueries.getCinemaDescription(App.userID);    
         }
@@ -71,7 +82,10 @@ namespace CinemaSchedule.UserControls
             }
             
         }
-
+        public ListView HallsList
+        {
+            get { return hallsList; }
+        }
         private void declineDescriptionButton_Click(object sender, RoutedEventArgs e)
         {
             saveDescriptionButton.Visibility = Visibility.Hidden;
@@ -79,6 +93,13 @@ namespace CinemaSchedule.UserControls
             editDescriptionButton.Visibility = Visibility.Visible;
             descriptionTextBox.Visibility = Visibility.Hidden;
             descriptionLabel.Visibility = Visibility.Visible;
+        }
+
+        private void addHallButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.addHallWindow addHallWindow = new Windows.addHallWindow();
+            addHallWindow.ShowDialog();
+            refreshHalls(App.userID);
         }
     }
 }

@@ -28,7 +28,22 @@
     <Compile Update="UserControls\Notes.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\NotesControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\Schedule.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\addHallWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\addNoteWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\editHallWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\editNoteWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -57,7 +72,22 @@
     <Page Update="UserControls\Notes.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserControls\NotesControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserControls\Schedule.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\addHallWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\addNoteWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\editHallWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\editNoteWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
