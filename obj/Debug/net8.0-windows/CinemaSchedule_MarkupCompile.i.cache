@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\App.xaml
-8893657530
+9-520425517
 3929455098
-17172888242
+19-1944223115
 204-1782918693
-MainApp.xaml;MainWindow.xaml;Registration.xaml;RegistrationUser.xaml;UserControls\Movies.xaml;UserControls\MyCinema.xaml;UserControls\Notes.xaml;UserControls\Schedule.xaml;
+MainApp.xaml;MainWindow.xaml;Registration.xaml;RegistrationUser.xaml;UserControls\HallsControl.xaml;UserControls\Movies.xaml;UserControls\MyCinema.xaml;UserControls\Notes.xaml;UserControls\Schedule.xaml;
 
 True
 

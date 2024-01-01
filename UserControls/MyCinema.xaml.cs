@@ -21,10 +21,64 @@ namespace CinemaSchedule.UserControls
     /// </summary>
     public partial class MyCinema : UserControl
     {
+        public void showErrorMessage(string errorContent)
+        {
+            MessageBox.Show(errorContent, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        public bool descriptionValidation(string message)
+        {
+            if (message == null || message.Length == 0) { return false; }
+            else { return true; }
+        }
+
+        public void updateDescription(string message, int userID)
+        {
+            DatabaseQueries.updateCinemaDescription(userID, message);
+        }
         public MyCinema()
         {
             InitializeComponent();
             cinemaNameLabel.Content = "Кинотеатр  " + DatabaseQueries.getCinemaName(App.userID);
+            descriptionLabel.Text = DatabaseQueries.getCinemaDescription(App.userID);    
+        }
+
+        private void editDescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            saveDescriptionButton.Visibility = Visibility.Visible;
+            declineDescriptionButton.Visibility = Visibility.Visible;
+            editDescriptionButton.Visibility = Visibility.Hidden;
+            descriptionTextBox.Visibility = Visibility.Visible;
+            descriptionLabel.Visibility = Visibility.Hidden;
+            descriptionTextBox.Text = DatabaseQueries.getCinemaDescription(App.userID);
+        }
+
+        private void saveDescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(descriptionValidation(descriptionTextBox.Text))
+            {
+                saveDescriptionButton.Visibility = Visibility.Hidden;
+                declineDescriptionButton.Visibility = Visibility.Hidden;
+                updateDescription(descriptionTextBox.Text, App.userID);
+                descriptionTextBox.Visibility = Visibility.Hidden;
+                descriptionLabel.Visibility = Visibility.Visible;
+                editDescriptionButton.Visibility = Visibility.Visible;
+                MessageBox.Show("Описание обновлено!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                descriptionLabel.Text = DatabaseQueries.getCinemaDescription(App.userID);
+            }
+            else
+            {
+                showErrorMessage("Описание некорректно!");
+            }
+            
+        }
+
+        private void declineDescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            saveDescriptionButton.Visibility = Visibility.Hidden;
+            declineDescriptionButton.Visibility = Visibility.Hidden;
+            editDescriptionButton.Visibility = Visibility.Visible;
+            descriptionTextBox.Visibility = Visibility.Hidden;
+            descriptionLabel.Visibility = Visibility.Visible;
         }
     }
 }

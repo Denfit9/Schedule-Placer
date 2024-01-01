@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:CinemaSchedule"
         mc:Ignorable="d"
         Title="MainApp" Height="900" Width="1920"
+        MinWidth="1000" MinHeight="700"
         WindowState="Maximized"
         Background="#FF2DB3FF" >
     <Window.Resources>

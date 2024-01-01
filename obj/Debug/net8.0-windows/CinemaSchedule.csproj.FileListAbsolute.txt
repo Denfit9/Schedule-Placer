@@ -45,3 +45,6 @@ C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-w
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Movies.baml
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Notes.baml
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\Schedule.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\HallsControl.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\HallsControl.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs

@@ -27,6 +27,7 @@ namespace CinemaSchedule
         public MainApp()
         {
             InitializeComponent();
+            
             NSP.Content = DatabaseQueries.getNSP(App.userID);
             //cinemaNameLabel.Content = "Кинотеатр  " + DatabaseQueries.getCinemaName(App.userID);
            // description.Text = DatabaseQueries.getCinemaDescription(App.userID);
