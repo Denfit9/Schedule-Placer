@@ -19,6 +19,9 @@
     <Compile Update="UserControls\HallsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\MovieControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\Movies.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,10 +40,16 @@
     <Compile Update="Windows\addHallWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\addMovieWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\addNoteWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\editHallWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\editMovieWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\editNoteWindow.xaml.cs">
@@ -63,6 +72,9 @@
     <Page Update="UserControls\HallsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserControls\MovieControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserControls\Movies.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -81,10 +93,16 @@
     <Page Update="Windows\addHallWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Windows\addMovieWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\addNoteWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\editHallWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\editMovieWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\editNoteWindow.xaml">

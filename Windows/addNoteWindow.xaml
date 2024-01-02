@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaSchedule.Windows"
         mc:Ignorable="d"
-        Title="addNoteWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Новая заметка" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Создание новой заметки" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Контент заметки" HorizontalAlignment="Left" Margin="60,45,0,0" VerticalAlignment="Top" FontSize="16"/>

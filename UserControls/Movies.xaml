@@ -5,8 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CinemaSchedule.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="1800" d:DesignWidth="1000" Background="White">
+             d:DesignHeight="800" d:DesignWidth="1800" Background="White">
     <Grid>
-            
+        <Label x:Name="cinemaNameLabel" Content="Фильмы" HorizontalAlignment="Center" FontSize="30" FontFamily="Book Antiqua" Margin="0,10,0,0" VerticalAlignment="Top"/>
+
+        <StackPanel HorizontalAlignment="Center" Height="680" Margin="0,60,400,0" VerticalAlignment="Top" Width="1000">
+            <ListView  x:Name="moviesList" VerticalContentAlignment="Center" Height="680">
+                
+            </ListView>
+        </StackPanel>
+        <Button x:Name="addMovieButton" Content="Добавить" HorizontalAlignment="Center" Margin="1050,60,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="18" BorderBrush="Black" BorderThickness="2" Width="340"  Height="50" Click="addMovieButton_Click"/>
+        <TextBox x:Name="searchTargetTextBox" HorizontalAlignment="Center" Margin="1050,180,0,0" VerticalAlignment="Top" TextWrapping="NoWrap" Text=""  Width="340" Height="40" FontSize="20" VerticalContentAlignment="Center" AcceptsReturn="False" AcceptsTab="False"/>
+        <Label x:Name="cinemaNameLabel_Copy" Content="Поиск по названию" HorizontalAlignment="Center" FontSize="20"  Margin="895,145,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="searchMovieButton" Content="Найти" HorizontalAlignment="Center" Margin="1050,230,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="18" BorderBrush="Black" BorderThickness="2" Width="340"  Height="50" Click="searchMovieButton_Click"/>
     </Grid>
 </UserControl>

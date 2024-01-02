@@ -47,6 +47,26 @@ namespace CinemaSchedule.MySQLServices
                 return false;
             }
         }
+        public static bool checkMovieBusiness(int movieID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string checkEmail = "SELECT EXISTS(SELECT * FROM event WHERE movieID = '" + movieID + "');";
+            cmd.CommandText = checkEmail;
+            object exists = cmd.ExecuteScalar();
+            conn.Close();
+
+            if (Convert.ToInt32(exists) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static int getUserID(string email)
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
@@ -196,6 +216,229 @@ namespace CinemaSchedule.MySQLServices
             return notes;
         }
 
+        public static void createMovie(string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres)
+        {
+            int cinemaID = getCinemaID(App.userID);
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            string createMovie = "INSERT Movie(movie_name, movie_description, since, up_to, cinemaID) VALUES ('" + movieName + "','" + movieDescription + "','" + fromDate.Value.ToString("yyyy-MM-dd") + "','" + toDate.Value.ToString("yyyy-MM-dd") + "'," + cinemaID + ");";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = createMovie;
+            int execute = cmd.ExecuteNonQuery();
+            string getMovieID = "SELECT movieID FROM Movie WHERE movie_name = '" + movieName +"' and movie_description='" + movieDescription + "' and since='" + fromDate.Value.ToString("yyyy-MM-dd") + "' and up_to ='" + toDate.Value.ToString("yyyy-MM-dd") + "' and cinemaID=" + cinemaID + ";";
+            cmd.CommandText = getMovieID;
+            int movieID = 0;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        movieID = reader.GetInt32(0);
+                    }
+                }
+            }
+            foreach(String country in countries)
+            {
+                string createCountry = "INSERT CountryConn(movieID, countryID) VALUES (" + movieID + "," + getCountryID(country) + ");";
+                cmd.CommandText = createCountry;
+                execute = cmd.ExecuteNonQuery();
+            }
+            foreach (String genre in genres)
+            {
+                string createGenre = "INSERT GenreConn(movieID, genreID) VALUES (" + movieID + "," + getGenreID(genre) + ");";
+                cmd.CommandText = createGenre;
+                execute = cmd.ExecuteNonQuery();
+            }
+
+            conn.Close();
+        }
+        public static void updateMovie(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres)
+        {
+            deleteCountries(movieID);
+            deleteGenres(movieID);
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            string updateMovie = "Update Movie SET movie_name = '" + movieName + "', movie_description = '" + movieDescription + "', since = '" + fromDate.Value.ToString("yyyy-MM-dd") + "', up_to = '" + toDate.Value.ToString("yyyy-MM-dd") + "' WHERE movieID = " + movieID + ";";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = updateMovie;
+            int execute = cmd.ExecuteNonQuery();
+            foreach (String country in countries)
+            {
+                string createCountry = "INSERT CountryConn(movieID, countryID) VALUES (" + movieID + "," + getCountryID(country) + ");";
+                cmd.CommandText = createCountry;
+                execute = cmd.ExecuteNonQuery();
+            }
+            foreach (String genre in genres)
+            {
+                string createGenre = "INSERT GenreConn(movieID, genreID) VALUES (" + movieID + "," + getGenreID(genre) + ");";
+                cmd.CommandText = createGenre;
+                execute = cmd.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+        public static void deleteMovie(int movieID)
+        {
+            deleteCountries(movieID);
+            deleteGenres(movieID);
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            string deleteMovie = "DELETE from Movie where movieID=" + movieID + ";";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = deleteMovie;
+            int execute = cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static List<Movie> populateMovies(int userID)
+        {
+            int cinemaID = getCinemaID(userID);
+            List<Movie> movies = new List<Movie>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT * FROM Movie WHERE cinemaID = " + userID + " ORDER BY movieID DESC;";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        movies.Add(new Movie(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3), reader.GetDateTime(4), populateGenres(reader.GetInt32(0)), populateCountries(reader.GetInt32(0))));
+                    }
+                }
+            }
+            conn.Close();
+            return movies;
+        }
+
+        public static List<String> populateCountries(int movieID)
+        {
+            List<String> countries = new List<String>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT movieID, country_name FROM countryConn JOIN country on countryConn.countryID = Country.countryID WHERE movieID =" + movieID + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        countries.Add(reader.GetString(1));
+                    }
+                }
+            }
+            conn.Close();
+            return countries;
+        }
+        public static void deleteCountries(int movieID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            List<String> countriesIDS = getCountriesID(movieID);
+            foreach (String countriesID in countriesIDS)
+            {
+                string deleteCountry = "DELETE from CountryConn where genreConnID=" + Convert.ToInt32(countriesID) + ";";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = deleteCountry;
+                int execute = cmd.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+        public static void deleteGenres(int movieID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            List<String> genresIDS = getGenresID(movieID);
+            foreach (String genreID in genresIDS)
+            {
+                string deleteGenre = "DELETE from GenreConn where genreConnID=" + Convert.ToInt32(genreID) + ";";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = deleteGenre;
+                int execute = cmd.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+
+        public static List<String> getCountriesID(int movieID)
+        {
+            List<String> countries = new List<String>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT genreConnID FROM countryConn JOIN country on countryConn.countryID = Country.countryID WHERE movieID =" + movieID + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        countries.Add(Convert.ToString(reader.GetInt32(0)));
+                    }
+                }
+            }
+            conn.Close();
+            return countries;
+        }
+
+        public static List<String> getGenresID(int movieID)
+        {
+            List<String> countries = new List<String>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT genreConnID FROM genreConn JOIN genre on genreConn.genreID = Genre.genreID WHERE movieID =" + movieID + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        countries.Add(Convert.ToString(reader.GetInt32(0)));
+                    }
+                }
+            }
+            conn.Close();
+            return countries;
+        }
+
+        public static List<String> populateGenres(int movieID)
+        {
+            List<String> genres = new List<String>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT movieID, genre_name FROM genreConn JOIN genre on genreConn.genreID = Genre.genreID WHERE movieID =" + movieID + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        genres.Add(reader.GetString(1));
+                    }
+                }
+            }
+            conn.Close();
+            return genres;
+        }
+
         public static string getNSP(int userID)
         {
             string NSP = "";
@@ -218,6 +461,50 @@ namespace CinemaSchedule.MySQLServices
 
             return NSP;
         }
+
+        public static int getGenreID(string genreName)
+        {
+            int genreID = 0;
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readGenre = "SELECT genreID FROM Genre WHERE genre_name = '" + genreName + "';";
+            cmd.CommandText = readGenre;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        genreID = reader.GetInt32(0);
+                    }
+                }
+            }
+            return genreID;
+        }
+
+        public static int getCountryID(string countryName)
+        {
+            int countryID = 0;
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readCountry = "SELECT countryID FROM Country WHERE country_name = '" + countryName + "';";
+            cmd.CommandText = readCountry;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        countryID = reader.GetInt32(0);
+                    }
+                }
+            }
+            return countryID;
+        }
         public static string getCinemaName(int userID)
         {
             string cinemaName = "";
@@ -237,7 +524,6 @@ namespace CinemaSchedule.MySQLServices
                     }
                 }
             }
-
             return cinemaName;
         }
         public static int getCinemaID(int userID)

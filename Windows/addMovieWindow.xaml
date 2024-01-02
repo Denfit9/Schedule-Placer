@@ -1,0 +1,45 @@
+﻿<Window x:Class="CinemaSchedule.Windows.addMovieWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaSchedule.Windows"
+        mc:Ignorable="d"
+        Title="Новый фильм" Height="600" Width="1050" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Добавление нового фильма" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Название фильма" HorizontalAlignment="Left" Margin="60,55,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="movieName" HorizontalAlignment="Left" Margin="60,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500" MaxLength="149" Height="24" AcceptsTab="True" AcceptsReturn="True"/>
+        <Label Content="Описание фильма" HorizontalAlignment="Left" Margin="60,110,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="movieDescription" HorizontalAlignment="Left" Margin="60,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500" MaxLength="499" Height="200" AcceptsTab="True" AcceptsReturn="True" ScrollViewer.CanContentScroll="True"/>
+        <Button IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Margin="620,85,0,0" VerticalAlignment="Top" Width="199" Height="30" Background="#FFBFF99C" Click="Button_Click" />
+        <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="620,125,0,0" VerticalAlignment="Top" Width="199" Height="30" Background="#FFD4D4D4"/>
+        <Label Content="Страны" HorizontalAlignment="Center" Margin="-600,350,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Жанры" HorizontalAlignment="Center" Margin="500,350,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <CheckBox x:Name="australiaCheckBox" Content="Австралия" HorizontalAlignment="Center" Margin="-900,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="belarusCheckBox" Content="Беларусь" HorizontalAlignment="Center" Margin="-750,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="belgiumCheckBox" Content="Бельгия" HorizontalAlignment="Center" Margin="-600,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="britainCheckBox" Content="Великобритания" HorizontalAlignment="Center" Margin="-400,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="germanyCheckBox" Content="Германия" HorizontalAlignment="Center" Margin="-200,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="greeceCheckBox" Content="Греция" HorizontalAlignment="Center" Margin="-918,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="russiaCheckBox" Content="Россия" HorizontalAlignment="Center" Margin="-762,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="usaCheckBox" Content="США" HorizontalAlignment="Center" Margin="-617,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="actionCheckBox" Content="Боевик" HorizontalAlignment="Center" Margin="250,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="biographyCheckBox" Content="Биография" HorizontalAlignment="Center" Margin="420,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="warCheckBox" Content="Военный" HorizontalAlignment="Center" Margin="600,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="kidsCheckBox" Content="Детский" HorizontalAlignment="Center" Margin="760,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="dramaCheckBox" Content="Драма" HorizontalAlignment="Center" Margin="910,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="documentalCheckBox" Content="Документальный" HorizontalAlignment="Center" Margin="304,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="detectiveCheckBox" Content="Детевктив" HorizontalAlignment="Center" Margin="607,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="criminalCheckBox" Content="Криминал" HorizontalAlignment="Center" Margin="772,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="comedyCheckBox" Content="Комедия" HorizontalAlignment="Center" Margin="922,400,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cartoonCheckBox" Content="Мультик" HorizontalAlignment="Center" Margin="258,420,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="melodramaCheckBox" Content="Мелодрама" HorizontalAlignment="Center" Margin="427,420,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="horrorCheckBox" Content="Ужастик" HorizontalAlignment="Center" Margin="597,420,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="fantasyCheckBox" Content="Фэнтези" HorizontalAlignment="Center" Margin="762,420,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата начала проката" HorizontalAlignment="Center" Margin="360,160,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Calendar x:Name="startingCalendar" HorizontalAlignment="Center" Margin="360,190,0,0" VerticalAlignment="Top" Height="165"/>
+        <Label Content="Дата окончания проката" HorizontalAlignment="Center" Margin="770,160,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Calendar x:Name="endingCalendar" HorizontalAlignment="Center" Margin="770,190,0,0" VerticalAlignment="Top" Height="165"/>
+    </Grid>
+</Window>
