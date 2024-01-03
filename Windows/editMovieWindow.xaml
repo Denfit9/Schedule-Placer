@@ -12,10 +12,16 @@
         <TextBox x:Name="movieName" HorizontalAlignment="Left" Margin="60,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500" MaxLength="149" Height="24" AcceptsTab="True" AcceptsReturn="True"/>
         <Label Content="Описание фильма" HorizontalAlignment="Left" Margin="60,110,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="movieDescription" HorizontalAlignment="Left" Margin="60,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500" MaxLength="499" Height="200" AcceptsTab="True" AcceptsReturn="True" ScrollViewer.CanContentScroll="True"/>
-        <Button IsDefault="True" Content="Изменить" HorizontalAlignment="Left" Margin="620,85,0,0" VerticalAlignment="Top" Width="199" Height="30" Background="#FFBFF99C" Click="Button_Click" />
-        <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="620,125,0,0" VerticalAlignment="Top" Width="199" Height="30" Background="#FFD4D4D4"/>
+        <Button IsDefault="True" Content="Изменить" HorizontalAlignment="Left" Margin="820,85,0,0" VerticalAlignment="Top" Width="199" Height="30" Background="#FFBFF99C" Click="Button_Click" />
+        <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="820,125,0,0" VerticalAlignment="Top" Width="199" Height="30" Background="#FFD4D4D4"/>
         <Label Content="Страны" HorizontalAlignment="Center" Margin="-600,350,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Жанры" HorizontalAlignment="Center" Margin="500,350,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Часов" HorizontalAlignment="Left" Margin="620,80,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="movieHours" HorizontalAlignment="Center" Margin="245,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="1" Height="24" AcceptsTab="False" AcceptsReturn="False"  PreviewTextInput="movieHours_PreviewTextInput" CommandManager.PreviewExecuted="movieHours_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label Content="Минут" HorizontalAlignment="Left" Margin="680,80,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="movieMinutes" HorizontalAlignment="Center" Margin="365,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieMinutes_PreviewTextInput" CommandManager.PreviewExecuted="movieMinutes_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label Content="Секунд" HorizontalAlignment="Left" Margin="740,80,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="movieSeconds" HorizontalAlignment="Center" Margin="495,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieSeconds_PreviewTextInput" CommandManager.PreviewExecuted="movieSeconds_PreviewExecuted" ContextMenu="{x:Null}"/>
         <CheckBox x:Name="australiaCheckBox" Content="Австралия" HorizontalAlignment="Center" Margin="-900,380,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="belarusCheckBox" Content="Беларусь" HorizontalAlignment="Center" Margin="-750,380,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="belgiumCheckBox" Content="Бельгия" HorizontalAlignment="Center" Margin="-600,380,0,0" VerticalAlignment="Top"/>

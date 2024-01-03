@@ -216,12 +216,12 @@ namespace CinemaSchedule.MySQLServices
             return notes;
         }
 
-        public static void createMovie(string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres)
+        public static void createMovie(string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres, int duration)
         {
             int cinemaID = getCinemaID(App.userID);
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
-            string createMovie = "INSERT Movie(movie_name, movie_description, since, up_to, cinemaID) VALUES ('" + movieName + "','" + movieDescription + "','" + fromDate.Value.ToString("yyyy-MM-dd") + "','" + toDate.Value.ToString("yyyy-MM-dd") + "'," + cinemaID + ");";
+            string createMovie = "INSERT Movie(movie_name, movie_description, since, up_to, cinemaID, movie_duration) VALUES ('" + movieName + "','" + movieDescription + "','" + fromDate.Value.ToString("yyyy-MM-dd") + "','" + toDate.Value.ToString("yyyy-MM-dd") + "'," + cinemaID + ", " + duration  + ");";
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = createMovie;
@@ -254,13 +254,13 @@ namespace CinemaSchedule.MySQLServices
 
             conn.Close();
         }
-        public static void updateMovie(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres)
+        public static void updateMovie(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres, int duration)
         {
             deleteCountries(movieID);
             deleteGenres(movieID);
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
-            string updateMovie = "Update Movie SET movie_name = '" + movieName + "', movie_description = '" + movieDescription + "', since = '" + fromDate.Value.ToString("yyyy-MM-dd") + "', up_to = '" + toDate.Value.ToString("yyyy-MM-dd") + "' WHERE movieID = " + movieID + ";";
+            string updateMovie = "Update Movie SET movie_name = '" + movieName + "', movie_description = '" + movieDescription + "', since = '" + fromDate.Value.ToString("yyyy-MM-dd") + "', up_to = '" + toDate.Value.ToString("yyyy-MM-dd") + "', movie_duration= " + duration +  " WHERE movieID = " + movieID + ";";
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = updateMovie;
@@ -293,6 +293,20 @@ namespace CinemaSchedule.MySQLServices
             conn.Close();
         }
 
+        public static int getMovieDuration(int movieID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string checkEmail = "SELECT movie_duration FROM Movie WHERE movieID = '" + movieID + "';";
+            cmd.CommandText = checkEmail;
+            int userID = (int)cmd.ExecuteScalar();
+            conn.Close();
+
+            return userID;
+        }
+
         public static List<Movie> populateMovies(int userID)
         {
             int cinemaID = getCinemaID(userID);
@@ -309,7 +323,7 @@ namespace CinemaSchedule.MySQLServices
                 {
                     while (reader.Read())
                     {
-                        movies.Add(new Movie(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3), reader.GetDateTime(4), populateGenres(reader.GetInt32(0)), populateCountries(reader.GetInt32(0))));
+                        movies.Add(new Movie(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3), reader.GetDateTime(4), populateGenres(reader.GetInt32(0)), populateCountries(reader.GetInt32(0)), reader.GetInt32(6)));
                     }
                 }
             }

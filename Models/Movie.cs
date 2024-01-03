@@ -15,8 +15,9 @@ namespace CinemaSchedule.Models
         public DateTime? endingDate { get; set; }
         public List<String> movieGenres { get; set; }
         public List<String> movieCountries { get; set; }
+        public int duration { get; set; }
 
-        public Movie(int movieID, string movieName, string movieDescription, DateTime? startingDate, DateTime? endingDate, List<string> movieGenres, List<string> movieCountries) 
+        public Movie(int movieID, string movieName, string movieDescription, DateTime? startingDate, DateTime? endingDate, List<string> movieGenres, List<string> movieCountries, int duration) 
         {
             this.movieID = movieID;
             this.movieName = movieName;
@@ -25,6 +26,7 @@ namespace CinemaSchedule.Models
             this.endingDate = endingDate;
             this.movieGenres = movieGenres;
             this.movieCountries = movieCountries;
+            this.duration = duration;
         }
     }
 }

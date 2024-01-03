@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,7 @@ namespace CinemaSchedule.Windows
         {
             MessageBox.Show(errorContent, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        private bool movieValidation(string name, string description, DateTime? fromDate, DateTime? toDate, ref string errorMsg)
+        private bool movieValidation(string name, string description, DateTime? fromDate, DateTime? toDate, ref string errorMsg, int hours, int minutes, int seconds)
         {
             int errorCount = 0;
             if (string.IsNullOrEmpty(name))
@@ -55,6 +56,26 @@ namespace CinemaSchedule.Windows
             {
                 errorCount++;
                 errorMsg += "Некорректные даты проката (возможно дата окончания проката меньше даты начала)\n";
+            }
+            if (hours >= 5)
+            {
+                errorCount++;
+                errorMsg += "Фильм не может быть длиннее пяти часов\n";
+            }
+            if (minutes > 60)
+            {
+                errorCount++;
+                errorMsg += "Минуты должны быть меньше 60\n";
+            }
+            if (seconds > 60)
+            {
+                errorCount++;
+                errorMsg += "Секунды должны быть меньше 60\n";
+            }
+            if ((hours * 3600 + minutes * 60 + seconds) <= 1800)
+            {
+                errorCount++;
+                errorMsg += "Фильм должен быть длиннее 30 минут\n";
             }
 
             if (errorCount != 0)
@@ -156,31 +177,38 @@ namespace CinemaSchedule.Windows
             }
             return genres;
         }
-        private void editMovie(int movieID,string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate)
+        private void editMovie(int movieID,string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, int hours, int minutes, int seconds)
         {
             string errorMsg = "";
-            if (movieValidation(movieName, movieDescription, fromDate, toDate, ref errorMsg) == false)
+            if (movieValidation(movieName, movieDescription, fromDate, toDate, ref errorMsg, hours, minutes, seconds) == false)
             {
                 showErrorMessage(errorMsg);
             }
             else
             {
+                int secondsFull = hours * 3600 + minutes * 60 + seconds;
                 List<String> countriesReceived = GetCountries();
                 List<String> genresReceived = GetGenres();
-                DatabaseQueries.updateMovie(movieID, movieName, movieDescription, fromDate, toDate, countriesReceived, genresReceived);
+                DatabaseQueries.updateMovie(movieID, movieName, movieDescription, fromDate, toDate, countriesReceived, genresReceived, secondsFull);
                 MessageBox.Show("Фильм успешно изменён", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.DialogResult = true;
             }
         }
-        public editMovieWindow(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres)
+        public editMovieWindow(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres, int duration)
         {
             InitializeComponent();
+            int hours = duration / 3600;
+            int minutes = (duration - (3600 * hours)) / 60;
+            int seconds = (duration - (3600 * hours) - (minutes * 60));
             this.movieID = movieID;
             this.movieName.Text = movieName;
             this.movieDescription.Text = movieDescription;
             this.startingCalendar.SelectedDate = fromDate;
             this.endingCalendar.SelectedDate = toDate;
-            foreach(String country in countries)
+            this.movieHours.Text = Convert.ToString(hours);
+            this.movieMinutes.Text = Convert.ToString(minutes);
+            this.movieSeconds.Text = Convert.ToString(seconds);
+            foreach (String country in countries)
             {
                 if (country=="Австралия")
                 {
@@ -277,7 +305,34 @@ namespace CinemaSchedule.Windows
             }
             else
             {
-                editMovie(movieID, movieName.Text, movieDescription.Text, startingCalendar.SelectedDate, endingCalendar.SelectedDate);
+                int hours = 0;
+                int minutes = 0;
+                int seconds = 0;
+                if (movieHours.Text.Length == 0)
+                {
+                    hours = 0;
+                }
+                else
+                {
+                    hours = Convert.ToInt32(movieHours.Text);
+                }
+                if (movieMinutes.Text.Length == 0)
+                {
+                    minutes = 0;
+                }
+                else
+                {
+                    minutes = Convert.ToInt32(movieMinutes.Text);
+                }
+                if (movieSeconds.Text.Length == 0)
+                {
+                    seconds = 0;
+                }
+                else
+                {
+                    seconds = Convert.ToInt32(movieSeconds.Text);
+                }
+                editMovie(movieID, movieName.Text, movieDescription.Text, startingCalendar.SelectedDate, endingCalendar.SelectedDate, hours, minutes, seconds);
                 MainApp? parentWindow = Window.GetWindow(this) as MainApp;
                 foreach (Window window in Application.Current.Windows.OfType<MainApp>())
                 {
@@ -287,6 +342,33 @@ namespace CinemaSchedule.Windows
                 Movies movies = new Movies();
                 parentWindow?.ContentPanel.Children.Add(movies);
             }
+        }
+        private void movieHours_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void movieHours_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste) { e.Handled = true; }
+        }
+        private void movieMinutes_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void movieMinutes_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste) { e.Handled = true; }
+        }
+        private void movieSeconds_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void movieSeconds_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste) { e.Handled = true; }
         }
     }
 }

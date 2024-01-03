@@ -23,5 +23,6 @@
         <TextBlock x:Name="startingDateText" Text="03-02-2002" TextWrapping="Wrap" HorizontalAlignment="Center"  Margin="-500,455,20,0" VerticalAlignment="Top" FontSize="14" Width="120" Height="25"  TextAlignment="Center"/>
         <TextBlock x:Name="endingDate" Text="Конец проката:" TextWrapping="Wrap" HorizontalAlignment="Center"  Margin="410,450,20,0" VerticalAlignment="Top" FontSize="18" Width="150" Height="30" FontWeight="Bold" TextAlignment="Center"/>
         <TextBlock x:Name="endingDateText" Text="03-02-2002" TextWrapping="Wrap" HorizontalAlignment="Center"  Margin="650,455,20,0" VerticalAlignment="Top" FontSize="14" Width="120" Height="25"  TextAlignment="Center"/>
+        <TextBlock x:Name="DurationText" Text="2 час. 3 мин. 2 сек." TextWrapping="Wrap" HorizontalAlignment="Center"  Margin="-50,455,20,0" VerticalAlignment="Top" FontSize="14" Width="150" Height="25"  TextAlignment="Center"/>
     </Grid>
 </UserControl>

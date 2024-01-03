@@ -28,7 +28,7 @@ namespace CinemaSchedule.UserControls
             List<Movie> movies = DatabaseQueries.populateMovies(userID);
             foreach (Movie movie in movies)
             {
-                moviesList.Items.Add(new MovieControl(movie.movieID, movie.movieName, movie.movieDescription, movie.startingDate, movie.endingDate, movie.movieCountries, movie.movieGenres));
+                moviesList.Items.Add(new MovieControl(movie.movieID, movie.movieName, movie.movieDescription, movie.startingDate, movie.endingDate, movie.movieCountries, movie.movieGenres, movie.duration));
             }
         }
 
@@ -41,7 +41,7 @@ namespace CinemaSchedule.UserControls
                                  select movie;
             foreach (Movie movie in moviesSelected)
             {
-                moviesList.Items.Add(new MovieControl(movie.movieID, movie.movieName, movie.movieDescription, movie.startingDate, movie.endingDate, movie.movieCountries, movie.movieGenres));
+                moviesList.Items.Add(new MovieControl(movie.movieID, movie.movieName, movie.movieDescription, movie.startingDate, movie.endingDate, movie.movieCountries, movie.movieGenres, movie.duration));
             }
         }
         public Movies()

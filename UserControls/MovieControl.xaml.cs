@@ -41,7 +41,7 @@ namespace CinemaSchedule.UserControls
             InitializeComponent();
         }
 
-        public MovieControl(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres)
+        public MovieControl(int movieID, string movieName, string movieDescription, DateTime? fromDate, DateTime? toDate, List<String> countries, List<String> genres, int duration)
         {
             InitializeComponent();
             this.movieID.Content = movieID;
@@ -69,6 +69,10 @@ namespace CinemaSchedule.UserControls
             }
             this.movieCountries.Text = countriesString;
             this.movieGenres.Text = genresString;
+            int hours = duration / 3600;
+            int minutes = (duration -(3600*hours))/60;
+            int seconds = (duration - (3600 * hours) - (minutes*60));
+            this.DurationText.Text = Convert.ToString(hours) + " час. " + Convert.ToString(minutes) + " мин. " + Convert.ToString(seconds) + " сек.";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -82,7 +86,7 @@ namespace CinemaSchedule.UserControls
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Windows.editMovieWindow editMovieWindow = new Windows.editMovieWindow(Convert.ToInt32(movieID.Content.ToString()), movieName.Text, movieDescription.Text, Convert.ToDateTime(startingDateText.Text), Convert.ToDateTime(endingDateText.Text), DatabaseQueries.populateCountries(Convert.ToInt32(movieID.Content.ToString())), DatabaseQueries.populateGenres(Convert.ToInt32(movieID.Content.ToString())));
+            Windows.editMovieWindow editMovieWindow = new Windows.editMovieWindow(Convert.ToInt32(movieID.Content.ToString()), movieName.Text, movieDescription.Text, Convert.ToDateTime(startingDateText.Text), Convert.ToDateTime(endingDateText.Text), DatabaseQueries.populateCountries(Convert.ToInt32(movieID.Content.ToString())), DatabaseQueries.populateGenres(Convert.ToInt32(movieID.Content.ToString())), DatabaseQueries.getMovieDuration(Convert.ToInt32(movieID.Content.ToString())));
             editMovieWindow.ShowDialog();
         }
     }
