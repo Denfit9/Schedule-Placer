@@ -37,6 +37,9 @@
     <Compile Update="UserControls\Schedule.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\addEventWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\addHallWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +91,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\Schedule.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\addEventWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\addHallWindow.xaml">
