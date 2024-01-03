@@ -1,5 +1,6 @@
 ﻿using CinemaSchedule.Models;
 using CinemaSchedule.MySQLServices;
+using CinemaSchedule.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -159,6 +160,14 @@ namespace CinemaSchedule.Windows
                     DatabaseQueries.createEvent(movieID, beginning, eventName, hours, minutes, seconds, duration, hallID, cinemaID, eventType);
                     MessageBox.Show("Событие успешно добавлено!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.DialogResult = true;
+                    MainApp? parentWindow = Window.GetWindow(this) as MainApp;
+                    foreach (Window window in Application.Current.Windows.OfType<MainApp>())
+                    {
+                        parentWindow = window as MainApp;
+                    }
+                    parentWindow?.ContentPanel.Children.Clear();
+                    Schedule schedule = new Schedule();
+                    parentWindow?.ContentPanel.Children.Add(schedule);
                 }
             }
             else

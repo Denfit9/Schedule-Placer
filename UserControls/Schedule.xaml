@@ -9,14 +9,13 @@
     <Grid>
         <Label x:Name="cinemaScheduleLabel" Content="Расписание" HorizontalAlignment="Center" FontSize="30" FontFamily="Book Antiqua" Margin="0,15,0,0" VerticalAlignment="Top"/>
         <Label x:Name="cinemaFinalScheduleLabel" Content="Итоговое расписание" HorizontalAlignment="Center" FontSize="20" FontFamily="Book Antiqua" Margin="0,279,0,0" VerticalAlignment="Top" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Width="1400" Height="400" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top">
-            <ItemsControl BorderThickness="1" BorderBrush="Black">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Width="1400" Height="230" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top">
+            <ItemsControl x:Name="eventsList" BorderThickness="1" BorderBrush="Black">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <local:HallsControl></local:HallsControl>
 
             </ItemsControl>
         </ScrollViewer>

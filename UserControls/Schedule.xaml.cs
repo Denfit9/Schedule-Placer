@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CinemaSchedule.UserControls
 {
@@ -22,6 +23,15 @@ namespace CinemaSchedule.UserControls
     /// </summary>
     public partial class Schedule : UserControl
     {
+
+        private void refreshEvents(DateTime date, int hallID)
+        {
+            List <Event> events= DatabaseQueries.populateEventsList(App.userID, date, hallID);
+            foreach (Event ev in events)
+            {
+                eventsList.Items.Add(new EventControl(ev.eventId, ev.startingDate, ev.eventName, ev.duration, ev.hallID, ev.eventType));
+            }
+        }
         public int getHallID(string input)
         {
             int number = 0;
@@ -72,7 +82,7 @@ namespace CinemaSchedule.UserControls
             }
             else
             {
-
+                refreshEvents(Convert.ToDateTime(dateCalendar.SelectedDate), getHallID(hallsComboBox.SelectedValue.ToString()));
             }
         }
 
@@ -121,7 +131,16 @@ namespace CinemaSchedule.UserControls
             }
             else
             {
-
+                List<Movie> movies = DatabaseQueries.populateMoviesForEvent(App.userID, dateCalendar.SelectedDate);
+                if (movies.Count == 0)
+                {
+                    showErrorMessage("Фильмов для этой даты нет.\nСоставить расписание для этой даты невозможно!");
+                }
+                else
+                {
+                    Windows.addEventsAutoWindow addEventWindow = new Windows.addEventsAutoWindow(dateCalendar.SelectedDate, getHallID(hallsComboBox.SelectedValue.ToString()), movies);
+                    addEventWindow.ShowDialog();
+                }
             }
         }
     }

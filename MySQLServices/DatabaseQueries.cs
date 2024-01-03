@@ -414,6 +414,53 @@ namespace CinemaSchedule.MySQLServices
             conn.Close();
         }
 
+        public static void createEventSeconds(int? movieID, DateTime? beginning, string eventName, int seconds, int duration, int hallID, int cinemaID, string eventType)
+        {
+            string movieIDString = "";
+            if (movieID == null)
+            {
+                movieIDString = "NULL";
+            }
+            else
+            {
+                movieIDString = movieID.ToString();
+            }
+            DateTime dateTime = Convert.ToDateTime(beginning);
+            int typeID = 0;
+            if (eventType == "Фильм")
+            {
+                typeID = 1;
+            }
+            else if (eventType == "Перерыв")
+            {
+                typeID = 2;
+            }
+            else if (eventType == "Мероприятие")
+            {
+                typeID = 3;
+            }
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            string createNote = "INSERT Event(time, name, duration, hallID, movieID, cinemaID, typeID) VALUES ('" + dateTime.AddSeconds(seconds).ToString("yyyy-MM-dd HH:mm:ss") + "', '" + eventName + "', " + duration + ", " + hallID + ", " + movieIDString + ", " + getCinemaID(App.userID) + ", " + typeID + ");";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = createNote;
+            int execute = cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static void deleteEvent(int eventID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            string deleteMovie = "DELETE from Event where eventID=" + eventID + ";";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = deleteMovie;
+            int execute = cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public static string getEventType(int eventID)
         {
             string eventType = "";
@@ -437,6 +484,29 @@ namespace CinemaSchedule.MySQLServices
             return eventType;
         }
 
+        public static string getHallName(int hallID)
+        {
+            string hallName = "";
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT hall_name FROM Hall WHERE hallID = " + hallID + ";";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        hallName = reader.GetString(0);
+                    }
+                }
+            }
+            conn.Close();
+            return hallName;
+        }
+
         public static List<Event> populateEvents(int userID, DateTime? date, int hallID)
         {
             int cinemaID = getCinemaID(userID);
@@ -454,6 +524,30 @@ namespace CinemaSchedule.MySQLServices
                     while (reader.Read())
                     {
                         events.Add(new Event(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), getEventType(reader.GetInt32(0))));
+                    }
+                }
+            }
+            conn.Close();
+            return events;
+        }
+
+        public static List<Event> populateEventsList(int userID, DateTime? date, int hallID)
+        {
+            int cinemaID = getCinemaID(userID);
+            List<Event> events = new List<Event>();
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string readAccounts = "SELECT * FROM EVENT WHERE cinemaID = " + cinemaID + " and time >= '" + date.Value.ToString("yyyy-MM-dd") + "' and time <= '" + date.Value.AddDays(1).ToString("yyyy-MM-dd") + "' and hallID = " + hallID + " ORDER BY time ;";
+            cmd.CommandText = readAccounts;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        events.Add(new Event(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), 0, reader.GetInt32(6), getEventType(reader.GetInt32(0))));
                     }
                 }
             }

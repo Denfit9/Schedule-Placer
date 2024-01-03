@@ -16,6 +16,9 @@
     <Compile Update="RegistrationUser.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\EventControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\HallsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\Schedule.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\addEventsAutoWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\addEventWindow.xaml.cs">
@@ -72,6 +78,9 @@
     <Page Update="RegistrationUser.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserControls\EventControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserControls\HallsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -91,6 +100,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\Schedule.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\addEventsAutoWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\addEventWindow.xaml">
