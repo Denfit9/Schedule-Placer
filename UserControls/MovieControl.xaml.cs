@@ -89,5 +89,10 @@ namespace CinemaSchedule.UserControls
             Windows.editMovieWindow editMovieWindow = new Windows.editMovieWindow(Convert.ToInt32(movieID.Content.ToString()), movieName.Text, movieDescription.Text, Convert.ToDateTime(startingDateText.Text), Convert.ToDateTime(endingDateText.Text), DatabaseQueries.populateCountries(Convert.ToInt32(movieID.Content.ToString())), DatabaseQueries.populateGenres(Convert.ToInt32(movieID.Content.ToString())), DatabaseQueries.getMovieDuration(Convert.ToInt32(movieID.Content.ToString())));
             editMovieWindow.ShowDialog();
         }
+
+        private void movieDescription_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
+        }
     }
 }

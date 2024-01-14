@@ -68,5 +68,12 @@ namespace CinemaSchedule.Windows
                 showErrorMessage("Не удалось создать зал с такими данными");
             }
         }
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

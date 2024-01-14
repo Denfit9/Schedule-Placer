@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaSchedule.Windows"
         mc:Ignorable="d"
-        Title="Автоматическое добавление" Height="300" Width="1050" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Автоматическое добавление" Height="300" Width="1050" WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid >
         <Label Content="Автоматическое составление событий" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Button IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Margin="65,215,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFBFF99C" Click="Button_Click" />
         <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="450,215,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFD4D4D4"/>

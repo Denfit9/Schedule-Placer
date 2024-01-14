@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaSchedule.Windows"
         mc:Ignorable="d"
-        Title="Изменить фильм" Height="600" Width="1050" WindowStartupLocation="CenterScreen">
+        Title="Изменить фильм" Height="600" Width="1050" WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown">
     <Grid>
         <Label Content="Изменение фильма" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Название фильма" HorizontalAlignment="Left" Margin="60,55,0,0" VerticalAlignment="Top" FontSize="16"/>

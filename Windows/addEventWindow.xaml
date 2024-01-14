@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaSchedule.Windows"
         mc:Ignorable="d"
-        Title="Новое событие" Height="300" Width="1050" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Новое событие" Height="300" Width="1050" WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid >
         <Label Content="Создание нового события" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Тип события" HorizontalAlignment="Left" Margin="120,55,0,0" VerticalAlignment="Top" FontSize="16"/>
         <ComboBox x:Name="typeComboBox" HorizontalAlignment="Left" Margin="50,85,0,0" VerticalAlignment="Top" Width="230" Height="26" FontSize="16" SelectionChanged="typeComboBox_SelectionChanged"/>

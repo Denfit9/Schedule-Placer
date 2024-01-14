@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaSchedule.Windows"
         mc:Ignorable="d"
-        Title="Новый зал" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Новый зал" Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown">
     <Grid>
         <Label Content="Создание нового зала" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Название зала" HorizontalAlignment="Left" Margin="60,55,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="hallName" HorizontalAlignment="Left" Margin="60,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" MaxLength="64" Height="24" AcceptsTab="True" AcceptsReturn="True"/>
+        <TextBox x:Name="hallName" HorizontalAlignment="Left" Margin="60,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" MaxLength="64" Height="24" AcceptsTab="False" AcceptsReturn="False"/>
         <Label Content="Описание зала" HorizontalAlignment="Left" Margin="60,110,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="hallDescription" HorizontalAlignment="Left" Margin="60,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" MaxLength="64" Height="238" AcceptsTab="True" AcceptsReturn="True" />
+        <TextBox x:Name="hallDescription" HorizontalAlignment="Left" Margin="60,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" MaxLength="64" Height="238" AcceptsTab="False" AcceptsReturn="False" />
         <Button IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Margin="516,265,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFBFF99C" Click="Button_Click"/>
         <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="516,339,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFD4D4D4"/>
 

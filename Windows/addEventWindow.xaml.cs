@@ -72,6 +72,11 @@ namespace CinemaSchedule.Windows
                 errorCount++;
                 errorMsg += "Событие должно заканчиваться в пределах 24 часов\n";
             }
+            if ((hours * 3600 + minutes * 60 + seconds) == 0)
+            {
+                errorCount++;
+                errorMsg += "Событие должно начинаться хотя бы в одну секунду\n";
+            }
             if (duration == 0)
             {
                 errorCount++;
@@ -95,6 +100,25 @@ namespace CinemaSchedule.Windows
             else
             {
                 return true;
+            }
+        }
+        private void inputsFixer()
+        {
+            if (String.IsNullOrEmpty(eventDuration.Text))
+            {
+                eventDuration.Text = "0";
+            }
+            if (String.IsNullOrEmpty(movieHours.Text))
+            {
+                movieHours.Text = "0";
+            }
+            if (String.IsNullOrEmpty(movieMinutes.Text))
+            {
+                movieMinutes.Text = "0";
+            }
+            if (String.IsNullOrEmpty(movieSeconds.Text))
+            {
+                movieSeconds.Text = "0";
             }
         }
         private void addEventHandler(int hours, int minutes, int seconds, int duration)
@@ -204,9 +228,9 @@ namespace CinemaSchedule.Windows
                 }
                 else
                 {
+                    inputsFixer();
                     addEvent(getMovieID(movieComboBox.SelectedValue.ToString()), date, DatabaseQueries.getMovieName(getMovieID(movieComboBox.SelectedValue.ToString())), Convert.ToInt32(movieHours.Text), Convert.ToInt32(movieMinutes.Text), Convert.ToInt32(movieSeconds.Text), DatabaseQueries.getMovieDuration(getMovieID(movieComboBox.SelectedValue.ToString())), hallID, DatabaseQueries.getCinemaID(App.userID), typeComboBox.SelectedValue.ToString());
                 }
-                //addEvent()
             }
             else
             {
@@ -216,10 +240,10 @@ namespace CinemaSchedule.Windows
                 }
                 else
                 {
+                    inputsFixer();
                     addEvent(null, date, eventName.Text, Convert.ToInt32(movieHours.Text), Convert.ToInt32(movieMinutes.Text), Convert.ToInt32(movieSeconds.Text), Convert.ToInt32(eventDuration.Text), hallID, DatabaseQueries.getCinemaID(App.userID), typeComboBox.SelectedValue.ToString());
                 } 
             }
-            //addEvent(, )
         }
 
         private void movieHours_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -279,6 +303,14 @@ namespace CinemaSchedule.Windows
                 eventDuration.Visibility= Visibility.Visible;
                 eventNameLabel.Visibility= Visibility.Visible;
                 eventName.Visibility= Visibility.Visible;
+            }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                e.Handled = true;
             }
         }
     }
