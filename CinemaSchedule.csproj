@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Resources\cinema.png" />
+    <None Remove="Resources\edit-icon.png" />
     <None Remove="Resources\movie-reel.png" />
     <None Remove="Resources\movie-roll-tape.png" />
     <None Remove="Resources\notes.png" />
@@ -29,6 +30,9 @@
 
   <ItemGroup>
     <Resource Include="Resources\cinema.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\edit-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

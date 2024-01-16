@@ -27,6 +27,7 @@ namespace CinemaSchedule.UserControls
         private void refreshEvents(DateTime date, int hallID)
         {
             List <Event> events= DatabaseQueries.populateEventsList(App.userID, date, hallID);
+            eventsList.Items.Clear();
             foreach (Event ev in events)
             {
                 eventsList.Items.Add(new EventControl(ev.eventId, ev.startingDate, ev.eventName, ev.duration, ev.hallID, ev.eventType));

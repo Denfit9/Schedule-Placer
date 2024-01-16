@@ -101,5 +101,11 @@ namespace CinemaSchedule.UserControls
             addHallWindow.ShowDialog();
             refreshHalls(App.userID);
         }
+        private void changeName_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.editCinemaNameWindow editNameWindow = new Windows.editCinemaNameWindow();
+            editNameWindow.ShowDialog();
+            
+        }
     }
 }

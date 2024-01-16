@@ -8,6 +8,9 @@
              d:DesignHeight="800" d:DesignWidth="1800">
     <Grid Background="White">
         <Label x:Name="cinemaNameLabel" Content="CinemaName" HorizontalAlignment="Center" FontSize="30" FontFamily="Book Antiqua" Margin="0,15,0,0" VerticalAlignment="Top"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Center" Width="32" Height="35" Margin="770,30,0,0" BorderThickness="0" Background="{x:Null}" Click="changeName_Click">
+            <Image Source="/Resources/edit-icon.png" Height="25"/>
+        </Button>
         <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Width="800" Height="250">
             <TextBlock x:Name="descriptionLabel" Text="Description" TextWrapping="WrapWithOverflow"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Book Antiqua" Width="800" Height="250" TextAlignment="Center"/>
         </Border>

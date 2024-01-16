@@ -9,6 +9,7 @@ namespace CinemaSchedule.MySQLServices
     {
         public static bool checkUserExistence(string email, string password)
         {
+            
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
@@ -115,6 +116,18 @@ namespace CinemaSchedule.MySQLServices
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
             string createHall = "Update Hall SET hall_name = '" + name + "', hall_description = '" + description + "' WHERE hallID = " + hallID + ";";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = createHall;
+            int execute = cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static void updateCinemaName(int cinemaID, string name)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            string createHall = "Update Cinema SET cinema_name = '" + name + "' WHERE cinemaID = " + cinemaID + ";";
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = createHall;

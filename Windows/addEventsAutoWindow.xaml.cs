@@ -56,6 +56,7 @@ namespace CinemaSchedule.Windows
             int minutesEndInt = 0;
             int secondsBeginInt = 0;
             int secondsEndInt = 0;
+            int secondsBreakInt = 0;
             if (hoursBegin.Text.Length == 0)
             {
                 hoursBeginInt = 0;
@@ -87,6 +88,14 @@ namespace CinemaSchedule.Windows
             else
             {
                 minutesEndInt = Convert.ToInt32(minutesEnd.Text);
+            }
+            if(secondsBreak.Text.Length == 0)
+            {
+                secondsBreakInt = 0;
+            }
+            else
+            {
+                secondsBreakInt = Convert.ToInt32(secondsBreak.Text);
             }
             if(hoursBeginInt >= 25 || hoursEndInt >=25)
             {
@@ -137,8 +146,15 @@ namespace CinemaSchedule.Windows
                         }
                         else
                         {
-                            addBreak(date.Value, "Перерыв", secondsBeginInt, 1200, hallID, DatabaseQueries.getCinemaID(App.userID));
-                            secondsBeginInt += 1200;
+                            if (secondsBreakInt == 0)
+                            {
+
+                            }
+                            else
+                            {
+                                addBreak(date.Value, "Перерыв", secondsBeginInt, secondsBreakInt, hallID, DatabaseQueries.getCinemaID(App.userID));
+                                secondsBeginInt += secondsBreakInt;
+                            }
                             turn++;
                         }
                     }

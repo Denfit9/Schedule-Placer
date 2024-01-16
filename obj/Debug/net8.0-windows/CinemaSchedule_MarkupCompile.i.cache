@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\App.xaml
-20-1097036612
+21605189980
 3929455098
-3325618089
+34-539213126
 204-1782918693
-MainApp.xaml;MainWindow.xaml;Registration.xaml;RegistrationUser.xaml;UserControls\EventControl.xaml;UserControls\HallsControl.xaml;UserControls\MovieControl.xaml;UserControls\Movies.xaml;UserControls\MyCinema.xaml;UserControls\Notes.xaml;UserControls\NotesControl.xaml;UserControls\Schedule.xaml;Windows\addEventsAutoWindow.xaml;Windows\addEventWindow.xaml;Windows\addHallWindow.xaml;Windows\addMovieWindow.xaml;Windows\addNoteWindow.xaml;Windows\editHallWindow.xaml;Windows\editMovieWindow.xaml;Windows\editNoteWindow.xaml;
+MainApp.xaml;MainWindow.xaml;Registration.xaml;RegistrationUser.xaml;UserControls\EventControl.xaml;UserControls\HallsControl.xaml;UserControls\MovieControl.xaml;UserControls\Movies.xaml;UserControls\MyCinema.xaml;UserControls\Notes.xaml;UserControls\NotesControl.xaml;UserControls\Schedule.xaml;Windows\addEventsAutoWindow.xaml;Windows\addEventWindow.xaml;Windows\addHallWindow.xaml;Windows\addMovieWindow.xaml;Windows\addNoteWindow.xaml;Windows\editCinemaNameWindow.xaml;Windows\editHallWindow.xaml;Windows\editMovieWindow.xaml;Windows\editNoteWindow.xaml;
 
-True
+False
 

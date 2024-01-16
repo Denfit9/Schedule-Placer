@@ -69,3 +69,5 @@ C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-w
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\UserControls\EventControl.baml
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\addEventsAutoWindow.g.cs
 C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\addEventsAutoWindow.baml
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\editCinemaNameWindow.g.cs
+C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\obj\Debug\net8.0-windows\Windows\editCinemaNameWindow.baml
