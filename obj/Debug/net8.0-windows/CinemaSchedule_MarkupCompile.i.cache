@@ -16,5 +16,5 @@ C:\Users\d0306\Documents\Cinema\CinemaSchedule\CinemaSchedule\App.xaml
 204-1782918693
 MainApp.xaml;MainWindow.xaml;Registration.xaml;RegistrationUser.xaml;UserControls\EventControl.xaml;UserControls\HallsControl.xaml;UserControls\MovieControl.xaml;UserControls\Movies.xaml;UserControls\MyCinema.xaml;UserControls\Notes.xaml;UserControls\NotesControl.xaml;UserControls\Schedule.xaml;Windows\addEventsAutoWindow.xaml;Windows\addEventWindow.xaml;Windows\addHallWindow.xaml;Windows\addMovieWindow.xaml;Windows\addNoteWindow.xaml;Windows\editCinemaNameWindow.xaml;Windows\editHallWindow.xaml;Windows\editMovieWindow.xaml;Windows\editNoteWindow.xaml;
 
-False
+True
 

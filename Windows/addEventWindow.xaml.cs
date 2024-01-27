@@ -104,9 +104,17 @@ namespace CinemaSchedule.Windows
         }
         private void inputsFixer()
         {
-            if (String.IsNullOrEmpty(eventDuration.Text))
+            if (String.IsNullOrEmpty(eventHours.Text))
             {
-                eventDuration.Text = "0";
+                eventHours.Text = "0";
+            }
+            if (String.IsNullOrEmpty(eventMinutes.Text))
+            {
+                eventMinutes.Text = "0";
+            }
+            if (String.IsNullOrEmpty(eventSeconds.Text))
+            {
+                eventSeconds.Text = "0";
             }
             if (String.IsNullOrEmpty(movieHours.Text))
             {
@@ -241,7 +249,32 @@ namespace CinemaSchedule.Windows
                 else
                 {
                     inputsFixer();
-                    addEvent(null, date, eventName.Text, Convert.ToInt32(movieHours.Text), Convert.ToInt32(movieMinutes.Text), Convert.ToInt32(movieSeconds.Text), Convert.ToInt32(eventDuration.Text), hallID, DatabaseQueries.getCinemaID(App.userID), typeComboBox.SelectedValue.ToString());
+                    int errorCounter = 0;
+                    string errorMsg = "";
+                    if(Convert.ToInt32(eventHours.Text) > 8) 
+                    {
+                        errorCounter++;
+                        errorMsg += "Часы события не должны превышать 7 часов\n";
+                    }
+                    if (Convert.ToInt32(eventMinutes.Text) > 8)
+                    {
+                        errorCounter++;
+                        errorMsg += "Минуты события не могут превышать 60\n";
+                    }
+                    if (Convert.ToInt32(eventSeconds.Text) > 8)
+                    {
+                        errorCounter++;
+                        errorMsg += "Секунды события не могут превышать 60\n";
+                    }
+                    if(errorCounter == 0)
+                    {
+                        addEvent(null, date, eventName.Text, Convert.ToInt32(movieHours.Text), Convert.ToInt32(movieMinutes.Text), Convert.ToInt32(movieSeconds.Text), Convert.ToInt32(eventHours.Text) * 3600 + Convert.ToInt32(eventMinutes.Text) * 60 + Convert.ToInt32(eventSeconds.Text), hallID, DatabaseQueries.getCinemaID(App.userID), typeComboBox.SelectedValue.ToString());
+                    }
+                    else
+                    {
+                        showErrorMessage(errorMsg);
+                    }
+                    
                 } 
             }
         }
@@ -291,7 +324,12 @@ namespace CinemaSchedule.Windows
                 movieComboBox.Visibility = Visibility.Visible;
                 movieLabel.Visibility = Visibility.Visible;
                 eventDurationLabel.Visibility = Visibility.Hidden;
-                eventDuration.Visibility = Visibility.Hidden;
+                eventHours.Visibility = Visibility.Hidden;
+                eventMinutes.Visibility = Visibility.Hidden;
+                eventSeconds.Visibility = Visibility.Hidden;
+                hoursLabel.Visibility = Visibility.Hidden;
+                minutesLabel.Visibility = Visibility.Hidden;
+                secondsLabel.Visibility = Visibility.Hidden;
                 eventName.Visibility = Visibility.Hidden;
                 eventNameLabel.Visibility = Visibility.Hidden;
             }
@@ -300,7 +338,12 @@ namespace CinemaSchedule.Windows
                 movieComboBox.Visibility = Visibility.Hidden;
                 movieLabel.Visibility = Visibility.Hidden;
                 eventDurationLabel.Visibility = Visibility.Visible;
-                eventDuration.Visibility= Visibility.Visible;
+                eventHours.Visibility= Visibility.Visible;
+                eventMinutes.Visibility = Visibility.Visible;
+                eventSeconds.Visibility = Visibility.Visible;
+                hoursLabel.Visibility = Visibility.Visible;
+                minutesLabel.Visibility = Visibility.Visible;
+                secondsLabel.Visibility = Visibility.Visible;
                 eventNameLabel.Visibility= Visibility.Visible;
                 eventName.Visibility= Visibility.Visible;
             }

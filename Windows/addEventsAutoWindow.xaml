@@ -22,8 +22,13 @@
         <TextBox x:Name="hoursEnd" HorizontalAlignment="Center" Margin="-230,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="hoursEnd_PreviewTextInput" CommandManager.PreviewExecuted="hoursEnd_PreviewExecuted" ContextMenu="{x:Null}"/>
         <Label Content="Минута" HorizontalAlignment="Left" Margin="440,85,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="minutesEnd" HorizontalAlignment="Center" Margin="-110,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="minutesEnd_PreviewTextInput" CommandManager.PreviewExecuted="minutesEnd_PreviewExecuted" ContextMenu="{x:Null}"/>
-        <Label Content="Время перерыва" HorizontalAlignment="Center" Margin="450,60,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Секунды" HorizontalAlignment="Left" Margin="710,85,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="secondsBreak" HorizontalAlignment="Center" Margin="445,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" MaxLength="4" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="hoursEnd_PreviewTextInput" CommandManager.PreviewExecuted="hoursEnd_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label Content="Время перерыва" HorizontalAlignment="Center" Margin="465,60,0,0" VerticalAlignment="Top" FontSize="18"/>
+        
+        <Label Content="Часы" HorizontalAlignment="Center" Margin="320,85,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="hoursBreak" HorizontalAlignment="Center" Margin="320,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="hoursEnd_PreviewTextInput" CommandManager.PreviewExecuted="hoursEnd_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label Content="Минуты" HorizontalAlignment="Center" Margin="440,85,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="minutesBreak" HorizontalAlignment="Center" Margin="440,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="minutesEnd_PreviewTextInput" CommandManager.PreviewExecuted="minutesEnd_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label Content="Секунды" HorizontalAlignment="Center" Margin="590,85,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="secondsBreak" HorizontalAlignment="Center" Margin="590,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="hoursEnd_PreviewTextInput" CommandManager.PreviewExecuted="hoursEnd_PreviewExecuted" ContextMenu="{x:Null}"/>
     </Grid>
 </Window>

@@ -44,10 +44,61 @@ namespace CinemaSchedule.UserControls
         public EventControl(int eventID, DateTime dateBegin, string eventName, int duration, int hallID, string type)
         {
             InitializeComponent();
+            string hours = "";
+            string minutes = "";
+            string seconds = "";
+            if(duration / 3600 > 0)
+            {
+                if(duration / 3600 == 1)
+                {
+                    hours = Convert.ToString(duration / 3600) + " чаc ";
+                }
+                else if(duration / 3600 <= 4) 
+                {
+                    hours = Convert.ToString(duration / 3600) + " часа ";
+                }
+                else
+                {
+                    hours = Convert.ToString(duration / 3600) + " часов ";
+                }
+                
+            }
+            if ((duration - (duration / 3600) * 3600) / 60 > 0)
+            {
+                if (((duration - (duration / 3600) * 3600) / 60) % 10 == 4)
+                {
+                    minutes = Convert.ToString((duration - (duration / 3600) * 3600) / 60) + " минута ";
+                }
+                else if (((duration - (duration / 3600) * 3600) / 60) % 10 <= 4 && ((duration - (duration / 3600) * 3600) / 60) % 10 !=0)
+                {
+                    minutes = Convert.ToString((duration - (duration / 3600) * 3600) / 60) + " минуты ";
+                }
+                else
+                {
+                    minutes = Convert.ToString((duration - (duration / 3600) * 3600) / 60) + " минут ";
+                }
+                
+            }
+            if ( duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60 > 0)
+            {
+                if((duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60) % 10 == 1)
+                {
+                    seconds = Convert.ToString((duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60)) + " секунда ";
+                }
+                else if((duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60) % 10 <= 4 && (duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60) != 0)
+                {
+                    seconds = Convert.ToString((duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60)) + " секунды ";
+                }
+                else
+                {
+                    seconds = Convert.ToString((duration - ((duration / 3600) * 3600) - ((duration - (duration / 3600) * 3600) / 60) * 60)) + " секунд ";
+                }
+                
+            }
             this.eventName.Content = eventName.ToString();
             this.eventID.Content = eventID.ToString();
             this.beginsAtText.Content = dateBegin.ToString("dd-MM-yyyy HH:mm:ss");
-            this.eventDuration.Content = duration.ToString();
+            this.eventDuration.Content = hours + minutes + seconds;
             this.eventHall.Content = DatabaseQueries.getHallName(hallID).ToString();
             this.endsAtText.Content = dateBegin.AddSeconds(duration).ToString("dd-MM-yyyy HH:mm:ss");
             this.eventType.Content = type;

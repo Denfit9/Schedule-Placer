@@ -53,10 +53,13 @@ namespace CinemaSchedule.Windows
             int hoursBeginInt = 0;
             int minutesBeginInt = 0;
             int hoursEndInt= 0;
+            int hoursBreakInt = 0;
             int minutesEndInt = 0;
+            int minutesBreakInt = 0;
             int secondsBeginInt = 0;
             int secondsEndInt = 0;
             int secondsBreakInt = 0;
+
             if (hoursBegin.Text.Length == 0)
             {
                 hoursBeginInt = 0;
@@ -97,6 +100,22 @@ namespace CinemaSchedule.Windows
             {
                 secondsBreakInt = Convert.ToInt32(secondsBreak.Text);
             }
+            if(hoursBreak.Text.Length == 0)
+            {
+                hoursBreakInt = 0;
+            }
+            else
+            {
+                hoursBreakInt = Convert.ToInt32(hoursBreak.Text);
+            }
+            if(minutesBreak.Text.Length == 0)
+            {
+                minutesBreakInt = 0;
+            }
+            else
+            {
+                minutesBreakInt= Convert.ToInt32(minutesBreak.Text);
+            }
             if(hoursBeginInt >= 25 || hoursEndInt >=25)
             {
                 showErrorMessage("Часы не должны превышать 24");
@@ -117,8 +136,21 @@ namespace CinemaSchedule.Windows
             {
                 showErrorMessage("Время открытия должно быть меньше времени закрытия");
             }
+            else if(hoursBreakInt > 7)
+            {
+                showErrorMessage("Длительность часов перерыва не может превышать 3 часов");
+            }
+            else if(minutesBreakInt >= 60)
+            {
+                showErrorMessage("Длительность перерыва в минутах не может превышать 59 минут");
+            }
+            else if(secondsBreakInt >= 60)
+            {
+                showErrorMessage("Длительность перерыва в секундах не может превышать 59 секунд");
+            }
             else
             {
+                secondsBreakInt = hoursBreakInt * 3600 + minutesBreakInt * 60 + secondsBreakInt;
                 List<Event> events = DatabaseQueries.populateEventsList(App.userID, date, hallID);
                 foreach(Event ev in events)
                 {
@@ -153,7 +185,7 @@ namespace CinemaSchedule.Windows
                             else
                             {
                                 addBreak(date.Value, "Перерыв", secondsBeginInt, secondsBreakInt, hallID, DatabaseQueries.getCinemaID(App.userID));
-                                secondsBeginInt += secondsBreakInt;
+                                secondsBeginInt += secondsBreakInt + 1;
                             }
                             turn++;
                         }
@@ -175,7 +207,7 @@ namespace CinemaSchedule.Windows
                                     if(movie.duration == minimumMovieDuration)
                                     {
                                         addMovie(movie.movieID, date.Value, movie.movieName, secondsBeginInt, movie.duration, hallID, DatabaseQueries.getCinemaID(App.userID));
-                                        secondsBeginInt += movie.duration;
+                                        secondsBeginInt += movie.duration + 1;
                                         turn++;
                                     }
                                 }
@@ -183,7 +215,7 @@ namespace CinemaSchedule.Windows
                             else
                             {
                                 addMovie(movies[r].movieID, date.Value, movies[r].movieName, secondsBeginInt, movies[r].duration, hallID, DatabaseQueries.getCinemaID(App.userID));
-                                secondsBeginInt += movies[r].duration;
+                                secondsBeginInt += movies[r].duration + 1;
                                 turn++;
                             }
                         }

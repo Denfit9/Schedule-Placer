@@ -15,14 +15,21 @@
         <ComboBox x:Name="movieComboBox" HorizontalAlignment="Left" Margin="435,85,0,0" VerticalAlignment="Top" Width="230" Height="26" FontSize="16" Visibility="Hidden"/>
         <Button IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Margin="65,215,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFBFF99C" Click="Button_Click" />
         <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="450,215,0,0" VerticalAlignment="Top" Width="199" Height="45" Background="#FFD4D4D4"/>
-        <Label Content="Час" HorizontalAlignment="Left" Margin="720,55,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Час" HorizontalAlignment="Left" Margin="718,55,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="movieHours" HorizontalAlignment="Center" Margin="430,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieHours_PreviewTextInput" CommandManager.PreviewExecuted="movieHours_PreviewExecuted" ContextMenu="{x:Null}"/>
         <Label Content="Минута" HorizontalAlignment="Left" Margin="790,55,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="movieMinutes" HorizontalAlignment="Center" Margin="595,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieMinutes_PreviewTextInput" CommandManager.PreviewExecuted="movieMinutes_PreviewExecuted" ContextMenu="{x:Null}"/>
         <Label Content="Секунда" HorizontalAlignment="Left" Margin="890,55,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="movieSeconds" HorizontalAlignment="Center" Margin="800,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieSeconds_PreviewTextInput" CommandManager.PreviewExecuted="movieSeconds_PreviewExecuted" ContextMenu="{x:Null}"/>
-        <Label x:Name="eventDurationLabel" Content="Продолжительность (в секундах)" HorizontalAlignment="Left" Margin="690,125,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="eventDuration" HorizontalAlignment="Center" Margin="575,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" MaxLength="4" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="eventDuration_PreviewTextInput" CommandManager.PreviewExecuted="eventDuration_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label x:Name="eventDurationLabel" Content="Продолжительность события" HorizontalAlignment="Left" Margin="725,115,0,0" VerticalAlignment="Top" FontSize="16"/>
+        
+        <Label x:Name="hoursLabel"  Content="Часов" HorizontalAlignment="Left" Margin="712,135,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="eventHours" HorizontalAlignment="Center" Margin="430,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieHours_PreviewTextInput" CommandManager.PreviewExecuted="movieHours_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label x:Name="minutesLabel" Content="Минут" HorizontalAlignment="Left" Margin="793,135,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="eventMinutes" HorizontalAlignment="Center" Margin="595,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieMinutes_PreviewTextInput" CommandManager.PreviewExecuted="movieMinutes_PreviewExecuted" ContextMenu="{x:Null}"/>
+        <Label x:Name="secondsLabel" Content="Секунд" HorizontalAlignment="Left" Margin="893,135,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="eventSeconds" HorizontalAlignment="Center" Margin="800,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" MaxLength="2" Height="24" AcceptsTab="False" AcceptsReturn="False" PreviewTextInput="movieSeconds_PreviewTextInput" CommandManager.PreviewExecuted="movieSeconds_PreviewExecuted" ContextMenu="{x:Null}"/>
+        
         <Label x:Name="eventNameLabel" Content="Название события" HorizontalAlignment="Left" Margin="60,115,0,0" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
         <TextBox x:Name="eventName" HorizontalAlignment="Left" Margin="50,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" MaxLength="255" Height="24" AcceptsTab="False" AcceptsReturn="False" Visibility="Hidden"/>
     </Grid>

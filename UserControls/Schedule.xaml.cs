@@ -107,6 +107,7 @@ namespace CinemaSchedule.UserControls
             }
             else
             {
+                refreshEvents(Convert.ToDateTime(dateCalendar.SelectedDate), getHallID(hallsComboBox.SelectedValue.ToString()));
                 Windows.addEventWindow addEventWindow = new Windows.addEventWindow(dateCalendar.SelectedDate, getHallID(hallsComboBox.SelectedValue.ToString()));
                 addEventWindow.ShowDialog();
             }
