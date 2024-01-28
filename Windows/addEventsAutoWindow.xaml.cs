@@ -33,10 +33,12 @@ namespace CinemaSchedule.Windows
             this.date = date;
             this.hallID = hallID;
             this.movies = movies;
+            this.dateNotNull = Convert.ToDateTime(date);
         }
         private DateTime? date { get; set; }
         private int hallID { get; set; }
         private List<Movie> movies { get; set; }
+        private DateTime dateNotNull { get; set; }
 
         private void addMovie(int movieID, DateTime? beginning, string eventName, int seconds, int duration, int hallID, int cinemaID)
         {
@@ -172,7 +174,7 @@ namespace CinemaSchedule.Windows
                 {
                     if (turn % 2 == 0)
                     {
-                        if (secondsEndInt - secondsBeginInt < 1201)
+                        if (secondsEndInt - secondsBeginInt < secondsBreakInt)
                         {
                             simulating = false;
                         }
@@ -230,7 +232,7 @@ namespace CinemaSchedule.Windows
                     parentWindow = window as MainApp;
                 }
                 parentWindow?.ContentPanel.Children.Clear();
-                Schedule schedule = new Schedule();
+                Schedule schedule = new Schedule(hallID, dateNotNull);
                 parentWindow?.ContentPanel.Children.Add(schedule);
             }
         }

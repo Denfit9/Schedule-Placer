@@ -528,7 +528,7 @@ namespace CinemaSchedule.MySQLServices
             conn.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
-            string readAccounts = "SELECT * FROM EVENT WHERE cinemaID = " + cinemaID + " and time = '" + date.Value.ToString("yyyy-MM-dd") + "' and hallID = " + hallID  + " ;";
+            string readAccounts = "SELECT * FROM EVENT WHERE cinemaID = " + cinemaID + " and time >= '" + date.Value.ToString("yyyy-MM-dd 00:00:00") + "' and time <='" + date.Value.AddDays(1).ToString("yyyy-MM-dd 00:00:00") + "' and hallID = " + hallID  + " ;";
             cmd.CommandText = readAccounts;
             using (DbDataReader reader = cmd.ExecuteReader())
             {
@@ -536,7 +536,14 @@ namespace CinemaSchedule.MySQLServices
                 {
                     while (reader.Read())
                     {
-                        events.Add(new Event(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), getEventType(reader.GetInt32(0))));
+                        if (reader.IsDBNull(5))
+                        {
+                            events.Add(new Event(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), null, reader.GetInt32(6), getEventType(reader.GetInt32(0))));
+                        }
+                        else
+                        {
+                            events.Add(new Event(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), getEventType(reader.GetInt32(0))));
+                        }
                     }
                 }
             }

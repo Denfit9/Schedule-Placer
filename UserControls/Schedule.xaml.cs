@@ -63,6 +63,27 @@ namespace CinemaSchedule.UserControls
             }
         }
 
+        public Schedule(int hallIDReceived, DateTime time)
+        {
+            InitializeComponent();
+            dateCalendar.SelectedDate = time;
+            refreshEvents(time, hallIDReceived);
+            int selectedHall = 0;
+            int counter = 0;
+            List<Hall> halls = DatabaseQueries.populateHalls(App.userID);
+            foreach (Hall hall in halls)
+            {
+                hallsComboBox.Items.Add("ID: " + hall.hallID + "; Имя: " + hall.hallName);
+                if(hall.hallID == hallIDReceived)
+                {
+                    selectedHall = counter;
+                }
+                counter++;
+            }
+
+            hallsComboBox.SelectedIndex = selectedHall;
+        }
+
         private void showEventsButton_Click(object sender, RoutedEventArgs e)
         {
             int errorCount = 0;

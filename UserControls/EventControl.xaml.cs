@@ -100,16 +100,20 @@ namespace CinemaSchedule.UserControls
             this.beginsAtText.Content = dateBegin.ToString("dd-MM-yyyy HH:mm:ss");
             this.eventDuration.Content = hours + minutes + seconds;
             this.eventHall.Content = DatabaseQueries.getHallName(hallID).ToString();
+            hallIDP = hallID;
+            date =Convert.ToDateTime(dateBegin.ToString("dd-MM-yyyy"));
             this.endsAtText.Content = dateBegin.AddSeconds(duration).ToString("dd-MM-yyyy HH:mm:ss");
             this.eventType.Content = type;
         }
+        private int hallIDP = 0;
+        private DateTime date;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             askMessageConfirm(Convert.ToInt32(eventID.Content));
             MainApp? parentWindow = Window.GetWindow(this) as MainApp;
             parentWindow?.ContentPanel.Children.Clear();
-            Schedule schedule = new Schedule();
+            Schedule schedule = new Schedule(hallIDP, date);
             parentWindow?.ContentPanel.Children.Add(schedule);
         }
     }

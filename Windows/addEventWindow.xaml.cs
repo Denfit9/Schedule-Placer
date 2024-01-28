@@ -55,12 +55,12 @@ namespace CinemaSchedule.Windows
             if (minutes >= 60)
             {
                 errorCount++;
-                errorMsg += "Минуты не могут быть больше 60!\n";
+                errorMsg += "Минуты не могут быть больше 59!\n";
             }
             if (seconds >= 60)
             {
                 errorCount++;
-                errorMsg += "Секунды не могут быть больше 60!\n";
+                errorMsg += "Секунды не могут быть больше 59!\n";
             }
             if((hours*3600 + minutes*60 + seconds) >= 86400)
             {
@@ -162,25 +162,35 @@ namespace CinemaSchedule.Windows
                 List<Event> events = DatabaseQueries.populateEvents(App.userID, date, hallID);
                 foreach(Event ev in events)
                 {
-                    if(ev.startingDate <= beginning && ev.startingDate.AddSeconds(ev.duration) >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds))
+                    if(ev.startingDate <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds) && ev.startingDate.AddSeconds(ev.duration) >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds).AddSeconds(duration))
                     {
                         errorCounter++;
-                        errorMsg += "Новое событие полностью совпадает с уже существующим\n";
+                        errorMsg += "Новое событие накладывается на уже существующее\n";
+                        break;
                     }
-                    else if(ev.startingDate <= beginning && ev.startingDate.AddSeconds(ev.duration) <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds))
+                    else if(ev.startingDate <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds) && ev.startingDate.AddSeconds(ev.duration) >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds))
                     {
                         errorCounter++;
-                        errorMsg += "Новое событие полностью совпадает с уже существующим\n";
+                        errorMsg += "Новое событие накладывается на уже существующее\n";
+                        break;
                     }
-                    else if(ev.startingDate >= beginning && ev.startingDate.AddSeconds(ev.duration) >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds))
+                    else if(ev.startingDate <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds) && ev.startingDate >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds).AddSeconds(duration))
                     {
                         errorCounter++;
-                        errorMsg += "Новое событие полностью совпадает с уже существующим\n";
+                        errorMsg += "Новое событие накладывается на уже существующее\n";
+                        break;
                     }
-                    else if (ev.startingDate >= beginning && ev.startingDate.AddSeconds(ev.duration) <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds))
+                    else if (ev.startingDate >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds) && ev.startingDate.AddSeconds(ev.duration) >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds).AddSeconds(duration) && ev.startingDate <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds).AddSeconds(duration))
                     {
                         errorCounter++;
-                        errorMsg += "Новое событие полностью совпадает с уже существующим\n";
+                        errorMsg += "Новое событие накладывается на уже существующее\n";
+                        break;
+                    }
+                    else if (ev.startingDate >= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds) && ev.startingDate.AddSeconds(ev.duration) <= beginning2.AddHours(hours).AddMinutes(minutes).AddSeconds(seconds).AddSeconds(duration))
+                    {
+                        errorCounter++;
+                        errorMsg += "Новое событие накладывается на уже существующее\n";
+                        break;
                     }
                 }
                 if(errorCounter > 0)
@@ -198,7 +208,7 @@ namespace CinemaSchedule.Windows
                         parentWindow = window as MainApp;
                     }
                     parentWindow?.ContentPanel.Children.Clear();
-                    Schedule schedule = new Schedule();
+                    Schedule schedule = new Schedule(hallID, beginning2);
                     parentWindow?.ContentPanel.Children.Add(schedule);
                 }
             }
@@ -256,15 +266,15 @@ namespace CinemaSchedule.Windows
                         errorCounter++;
                         errorMsg += "Часы события не должны превышать 7 часов\n";
                     }
-                    if (Convert.ToInt32(eventMinutes.Text) > 8)
+                    if (Convert.ToInt32(eventMinutes.Text) >= 60)
                     {
                         errorCounter++;
-                        errorMsg += "Минуты события не могут превышать 60\n";
+                        errorMsg += "Минуты события не могут превышать 59\n";
                     }
-                    if (Convert.ToInt32(eventSeconds.Text) > 8)
+                    if (Convert.ToInt32(eventSeconds.Text) >= 60)
                     {
                         errorCounter++;
-                        errorMsg += "Секунды события не могут превышать 60\n";
+                        errorMsg += "Секунды события не могут превышать 59\n";
                     }
                     if(errorCounter == 0)
                     {
