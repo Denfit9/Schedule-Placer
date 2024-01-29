@@ -1,4 +1,5 @@
-﻿using CinemaSchedule.MySQLServices;
+﻿using CinemaSchedule.Models;
+using CinemaSchedule.MySQLServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,6 +99,7 @@ namespace CinemaSchedule.UserControls
             this.eventName.Content = eventName.ToString();
             this.eventID.Content = eventID.ToString();
             this.beginsAtText.Content = dateBegin.ToString("dd-MM-yyyy HH:mm:ss");
+            datePrecise = Convert.ToDateTime(dateBegin.ToString("dd-MM-yyyy HH:mm:ss"));
             this.eventDuration.Content = hours + minutes + seconds;
             this.eventHall.Content = DatabaseQueries.getHallName(hallID).ToString();
             hallIDP = hallID;
@@ -107,6 +109,7 @@ namespace CinemaSchedule.UserControls
         }
         private int hallIDP = 0;
         private DateTime date;
+        private DateTime datePrecise;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -115,6 +118,12 @@ namespace CinemaSchedule.UserControls
             parentWindow?.ContentPanel.Children.Clear();
             Schedule schedule = new Schedule(hallIDP, date);
             parentWindow?.ContentPanel.Children.Add(schedule);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Windows.MoveEventWindow moveEventWindow = new Windows.MoveEventWindow(Convert.ToInt32(eventID.Content), hallIDP, date, datePrecise);
+            moveEventWindow.ShowDialog();
         }
     }
 }

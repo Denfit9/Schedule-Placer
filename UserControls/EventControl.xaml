@@ -21,6 +21,7 @@
         <Label x:Name="endsAtText" Content="Мероприятие" HorizontalAlignment="Left" Margin="530,110,0,0" Width="160" VerticalAlignment="Top" FontSize="16" />
         <Label x:Name="eventID" Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="movieID" Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Background="#FFFDB9B9" FontSize="16" BorderThickness="1" BorderBrush="Black" Width="100" Click="Button_Click"/>
+        <Button Content="Переместить" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Background="#FFFCFCFC" FontSize="16" BorderThickness="1" BorderBrush="Black" Width="120" Click="Button_Click_1" />
+        <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Background="#FFFDB9B9" FontSize="16" BorderThickness="1" BorderBrush="Black" Width="120" Click="Button_Click"/>
     </Grid>
 </UserControl>

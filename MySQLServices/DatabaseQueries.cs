@@ -321,7 +321,33 @@ namespace CinemaSchedule.MySQLServices
             return userID;
         }
 
-        public static string getMovieName(int movieID)
+        public static int getEventDuration(int eventID)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            string checkEmail = "SELECT duration FROM Event WHERE eventID = '" + eventID + "';";
+            cmd.CommandText = checkEmail;
+            int userID = (int)cmd.ExecuteScalar();
+            conn.Close();
+
+            return userID;
+        }
+
+        public static void updateEvent(int eventID, DateTime fromDate)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
+            DateTime? fromDateNew = fromDate;
+            string updateMovie = "Update Event SET time = '" + fromDateNew.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE eventID = " + eventID + ";";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = updateMovie;
+            int execute = cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+            public static string getMovieName(int movieID)
         {
             string movieName = "";
             MySqlConnection conn = DBUtils.GetDBConnection();

@@ -67,6 +67,9 @@
     <Compile Update="Windows\editNoteWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\moveEventWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainApp.xaml">
@@ -130,6 +133,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\editNoteWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\moveEventWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
